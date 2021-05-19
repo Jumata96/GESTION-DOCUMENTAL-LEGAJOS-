@@ -11,4 +11,9 @@ class TrabajadorController extends Controller
 
         return view('forms.general.general');
     }
+    public function filiacionEidentidad(){
+        //dd('ingreso');
+
+        return view('forms.filiacion.filiacionEidentidad');
+    }
 }

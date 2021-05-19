@@ -21,4 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/','Auth\LoginController@showLoginForm')->name('/');
 Route::get('/login','Auth\LoginController@showLoginForm')->name('login');
 Route::get('/gestion-trabajador','TrabajadorController@index')->name('gestion-trabajador');
-// Route::get('/gestion-trabajador','TrabajadorController@index')->name('gestion-trabajador');
+
+Route::get('/gestion-fileacion','TrabajadorController@filiacionEidentidad')->name('gestion-fileacion');
+
+//legajo
+Route::get('/gestion-legajo','LegajoController@index')->name('gestion-legajo');
+ 
