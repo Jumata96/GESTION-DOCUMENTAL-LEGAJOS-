@@ -1,7 +1,6 @@
 @extends('layouts2.app')
 @section('titulo','Gestión de Escalafon')
-@section('main-content')
-<br>
+@section('main-content') 
 <div class="row">
 	<div class="col s12 m12 l12">
 		<div class="card">
@@ -91,16 +90,16 @@
                       @include('forms.filiacion.datosGenerales')                
                     </div>
                     <div id="pestana2" class="col s12 tabs-mk">  
-                      @include('forms.filiacion.datosGenerales')                
+                      @include('forms.filiacion.datosDomiciliarios')                
                     </div>
                     <div id="pestana3" class="col s12 tabs-mk" > 
-                      @include('forms.filiacion.datosGenerales')                
+                      @include('forms.filiacion.datosFamiliares')                
                     </div>
                     <div id="pestana4" class="col s12 tabs-mk"> 
-                      @include('forms.filiacion.datosGenerales')                
+                      @include('forms.filiacion.acreditaciondelengua')                
                     </div>
                     <div id="pestana5" class="col s12 tabs-mk"> 
-                      @include('forms.filiacion.datosGenerales')                
+                      @include('forms.filiacion.declaracionJurada')        
                     </div>
                   </div>       
 

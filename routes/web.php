@@ -22,7 +22,7 @@ Route::get('/','Auth\LoginController@showLoginForm')->name('/');
 Route::get('/login','Auth\LoginController@showLoginForm')->name('login');
 Route::get('/gestion-trabajador','TrabajadorController@index')->name('gestion-trabajador');
 
-Route::get('/gestion-fileacion','TrabajadorController@filiacionEidentidad')->name('gestion-fileacion');
+Route::get('/gestion-fileacion02','TrabajadorController@filiacionEidentidad')->name('gestion-fileacion02');
 
 //legajo
 Route::get('/gestion-legajo','LegajoController@index')->name('gestion-legajo');
