@@ -17,6 +17,7 @@
                 @else
                   @if(Auth::user()->menu_colapsible == 0)
                     <img id="logoInnova" src="{{asset('images/logo/InnovaWifi.png')}}" alt="InnovaWifi1" style=" height: 43px">               
+                  
                   @else
                     <img id="logoInnova" src="{{asset('images/logo/Isotipo.png')}}" alt="InnovaWifi2" style=" height: 43px; background-image: url('{{asset('images/logo/Isotipo.png')}}') !importar;"> 
                     <span id="LogoInnovaTec" class="hide logo-text hide-on-med-and-down"><b>Innova</b>Tec</span>                          
@@ -36,27 +37,11 @@
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
         
                 <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan">
-                    <i class="material-icons">dashboard</i>
-                    <span class="nav-text">DashBoard</span>
-                    <span class="badge badge pill orange float-right mr-10">3</span>
+                  <a class="waves-effect waves-cyan"  href="{{ url('/home') }}" >
+                    <i class="material-icons">settings_input_svideo</i>
+                    <span class="nav-text">DashBoard</span> 
                   </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li>
-                        <a href="{{ url('/home') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span> General</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{ url('/dashboard/finanzas') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span> Finanzas</span>
-                        </a>
-                      </li>   
-                    </ul>
-                  </div>
+                  
                 </li>
                 <li class="bold">
                   <a class="collapsible-header waves-effect waves-cyan">
@@ -68,39 +53,17 @@
                       <li>
                         <a href="{{ url('/empresa') }}">
                           <i class="material-icons">keyboard_arrow_right</i>
-                          <span> Editor de Empresas</span>
+                          <span> Empresa</span>
                         </a>
                       </li>
-                      <li>
-                        <a href="{{ url('/router') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Router</span>
-                        </a>
-                      </li>
+                      
                       <li>
                         <a href="{{ url('/usuarios') }}">
                           <i class="material-icons">keyboard_arrow_right</i>
                           <span> Usuarios del Sistema</span>
                         </a>
                       </li>
-                      <li>
-                        <a href="{{ url('/zonas') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Zonas</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{ url('/perfiles') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span> Planes Internet</span>
-                        </a>
-                      </li>     
-                      <li>
-                        <a href="{{ url('/pool') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span> Ip pool</span>
-                        </a>
-                      </li>     
+                      
                       <li>
                         <a href="{{ url('/parametros') }}">
                           <i class="material-icons">keyboard_arrow_right</i>
@@ -110,233 +73,79 @@
                     </ul>
                   </div>
                 </li>
-                <li class="bold hide">
-                  <a class="collapsible-header waves-effect waves-cyan">
-                    <i class="material-icons">wifi</i>
-                    <span class="nav-text">Hotspot</span>
+                <li class="navigation-header">
+                  <a class="navigation-header-text">Gestión administrativa</a>
+                  <i class="navigation-header-icon material-icons">more_horiz</i>
+                </li>
+                <li class="li-hover">
+                <li class="bold">
+                  <a class="waves-effect waves-cyan"  href="{{ url('/gestion-fileacion') }}" >
+                    <i class="material-icons">photo_filter</i>
+                    <span class="nav-text">Filiación e identificación</span>
                   </a>
-                  <div class="collapsible-body">
-                    <ul>   
-                      <li><a href="{{ url('/hotspot/usuarios') }}">
-                      <i class="material-icons">keyboard_arrow_right</i>
-                      <span>Usuarios Registrados</span></a>
-                      </li> 
-                      <li><a href="{{ url('/conexiones') }}">
-                      <i class="material-icons">keyboard_arrow_right</i>
-                      <span>Conexiones</span></a>
-                      </li>                   
-                      <li><a href="{{ url('/carrusel') }}">
-                      <i class="material-icons">keyboard_arrow_right</i>
-                      <span>Carrusel</span></a>
-                      </li> 
-                      <li><a href="{{ url('/hotspot/bienvenida') }}">
-                      <i class="material-icons">keyboard_arrow_right</i>
-                      <span>Bienvenida</span></a>
-                      </li> 
-                      <li><a href="{{ url('/hotspot/lstPublicidad') }}">
-                      <i class="material-icons">keyboard_arrow_right</i>
-                      <span>Publicidad</span></a>
-                      </li> 
-                      <li><a href="{{ url('/hotspot/logout') }}">
-                      <i class="material-icons">keyboard_arrow_right</i>
-                      <span>Logout</span></a>
-                      </li> 
-                      <li><a href="{{ url('/social') }}">
-                      <i class="material-icons">keyboard_arrow_right</i>
-                      <span>Redes Sociales</span></a>
-                      </li>                         
-                    </ul>
-                  </div>
                 </li>
                 <li class="bold">
-                  <a class="collapsible-header  waves-effect waves-cyan">
-                    <i class="material-icons">art_track</i>
-                    <span class="nav-text">Plantillas</span>
+                  <a class="waves-effect waves-cyan"  href="{{ url('/gestion-academica') }}" >
+                    <i class="material-icons">content_paste</i>
+                    <span class="nav-text">Situación académica</span>
                   </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="{{ url('/aviso/mntAviso') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Aviso</span>
-                      </a>
-                      </li> 
-                      <li>
-                        <a href="{{ url('/corte/mntCorte') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Corte</span>
-                        </a>
-                      </li>                      
-                      
-                    </ul>
-                  </div>
                 </li>
                 <li class="bold">
-                  <a class="collapsible-header  waves-effect waves-cyan">
-                    <i class="material-icons">person</i>
-                    <span class="nav-text">Clientes</span>
-                    <span class="badge  badge pill pink accent-2 float-right mr-10">5</span>
+                  <a class="waves-effect waves-cyan">
+                    <i class="material-icons">person_outline</i>
+                    <span class="nav-text">Ingreso o reingreso</span>
+                    
                   </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="{{ url('/clientes') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Usuarios</span>
-                      </a>
-                      </li> 
-                      <li><a href="{{ url('/proformas') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Proformas</span>
-                      </a>
-                      </li>
-                      <li><a href="{{ url('/clientes/mapa') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Mapa Usuarios</span>
-                      </a>
-                      </li> 
-                      <li><a href="{{ url('/clientes/notificaciones') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Notificaciones</span>
-                      </a>
-                      </li> 
-                      <li>
-                        <a href="{{ url('documento') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span> Doc. Personas</span>
-                        </a>
-                      </li>                      
-                      <li><a href="{{ url('/clientes/importar') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Herramientas</span>
-                      </a>
-                      </li>  
-                      <li>
-                        <a href="{{ url('/parametros-clientes') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Parámetros</span>
-                        </a>
-                      </li> 
-                    </ul>
-                  </div>
                 </li>
                 <li class="bold">
-                  <a class="collapsible-header  waves-effect waves-cyan">
-                    <i class="material-icons">local_offer</i>
-                    <span class="nav-text">Fichas</span>
+                  <a class=" waves-effect waves-cyan">
+                    <i class="material-icons">settings_ethernet</i>
+                    <span class="nav-text">Trayectoria laboral</span>
                   </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="{{ url('/fichas') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Generador</span>
-                      </a>
-                      </li>             
-                      <li><a href="{{ url('/fichas/plantillas') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Plantillas</span>
-                      </a>
-                      </li>  
-                      <li>
-                        <a href="#">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Parámetros</span>
-                        </a>
-                      </li> 
-                    </ul>
-                  </div>
                 </li>
                 <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan">
+                  <a class="waves-effect waves-cyan">
+                    <i class="material-icons">add</i>
+                    <span class="nav-text">Asignación e insentivos</span>
+                    
+                  </a>
+                </li>
+                <li class="bold">
+                  <a class="waves-effect waves-cyan">
                     <i class="material-icons">credit_card</i>
-                    <span class="nav-text">Facturación</span>
-                    <span class="badge badge pill purple float-right mr-10">10</span>
+                    <span class="nav-text">Retiro y régimen pension.</span>
                   </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="{{ url('/pagos') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Registar Pago</span>
-                      </a>
-                      </li>                            
-                      <li><a href="{{ url('documentoVenta') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Documento de Venta</span></a>
-                      </li> 
-                      <li>
-                        <a href="{{ url('formaPago') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span> Formas de Pago</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{ url('moneda') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span> Tipo de Moneda</span>
-                        </a>
-                      </li>
-                      <li><a href="{{ url('reporte-pagos') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Reporte de pagos</span></a>
-                      </li> 
-                      <li>
-                        <a href="{{ url('/parametros-facturacion') }}">
-                          <i class="material-icons">keyboard_arrow_right</i>
-                          <span>Parámetros</span>
-                        </a>
-                      </li> 
-                    </ul>
-                  </div>
-                </li>
-                <li class="bold">
-                  <a class="collapsible-header waves-effect waves-cyan">
-                    <i class="material-icons">store</i>
-                    <span class="nav-text">Almacén</span>
-                  </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="{{ url('/equipos') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Equipos</span></a>
-                      </li> 
-                      <li><a href="{{ url('grupo') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Grupos</span></a>
-                      </li>                                       
-                      <li><a href="{{ url('marca') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Marca</span></a>
-                      </li> 
-                      <li><a href="{{ url('modelo') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Modelo</span></a>
-                      </li> 
-                      <li><a href="{{ url('modo') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Tipo de Equipos</span></a>
-                      </li> 
-                    </ul>
-                  </div>
                 </li>
                 <li class="bold">
                   <a class=" waves-effect waves-cyan" href="{{ url('correo') }}">
-                    <i class="material-icons">email</i>
-                    <span class="nav-text">Mensajes</span>
+                    <i class="material-icons">star_border</i>
+                    <span class="nav-text">Premios y estímulos</span>
                   </a>                  
                 </li>
-                {{--  <li class="bold">
-                  <a class="collapsible-header  waves-effect waves-cyan">
-                    <i class="material-icons">build</i>
-                    <span class="nav-text">Soporte Técnico</span>
+                <li class="bold">
+                  <a class="waves-effect waves-cyan">
+                    <i class="material-icons">warning</i>
+                    <span class="nav-text">Sanciones</span>
                   </a>
-                  <div class="collapsible-body">
-                    <ul>
-                      <li><a href="{{ url('tickets') }}">
-                        <i class="material-icons">keyboard_arrow_right</i>
-                        <span>Tickets</span>
-                      </a>
-                      </li>  
-                    </ul>
-                  </div>
-                </li>  --}}
+                </li>
+                <li class="bold">
+                  <a class="waves-effect waves-cyan">
+                    <i class="material-icons">airplay</i>
+                    <span class="nav-text">Licencias y vaciones</span>
+                  </a>
+                </li>
+                <li class="bold">
+                  <a class="waves-effect waves-cyan">
+                    <i class="material-icons">format_list_bulleted</i>
+                    <span class="nav-text">Otros</span>
+                  </a>
+                </li>
+                <li class="bold">
+                  <a class="waves-effect waves-cyan">
+                    <i class="material-icons">receipt</i>
+                    <span class="nav-text">Informe escalafonario</span>
+                  </a>
+                </li>
                 <li class="navigation-header">
                   <a class="navigation-header-text">Mas opciones</a>
                   <i class="navigation-header-icon material-icons">more_horiz</i>

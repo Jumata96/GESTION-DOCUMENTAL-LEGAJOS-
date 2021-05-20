@@ -16,19 +16,9 @@
         <nav id="navbarMain" class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark no-shadow gradient-45deg-light-blue-cyan" >
         @endif
           <div class="nav-wrapper">
-            {{-- <div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">search</i>
+            <div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">search</i>
               <input class="header-search-input z-depth-2" type="text" name="Search" placeholder="Buscador">
-            </div> --}}
-            {{-- <div  style="padding-left: 100px; ">
-              <a class="dropdown-trigger" href="#!" data-target="dropdown1">ESCALAFÓN<i class="material-icons left">dehaze</i></a>  
-              <ul id="dropdown1" class="dropdown-content">
-                  <li><a href="#!">one</a></li>
-                  <li><a href="#!">two</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#!">three</a></li>
-                </ul> 
-                        
-            </div> --}}
+            </div>
             <ul class="navbar-list right">
               <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light translation-button" href="javascript:void(0);" data-target="translation-dropdown"><span class="flag-icon flag-icon-gb"></span></a></li>
               <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
