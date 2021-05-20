@@ -97,9 +97,19 @@
 
         });
 
+        // $('.datepicker').datepicker( {"format":'dd-mm-yyyy'} ).datepicker("setDate", new Date());
+        $('.datepicker').datepicker( {"format":'dd-mm-yyyy'}).datepicker("setDate", new Date());
         
-
+        // $(document).ready(function(){
+        //   $('.datepicker').datepicker(
+        //       {selectMonths: false},// Creates a dropdown to control month
+        //       {selectYears: 100}, // Creates a dropdown of 15 years to control year
+        //       {format: 'dd/mm/yyyy'} 
+        //   );
+          
+        // });
     </script>
+    
 
     @include('layouts2.scripts.herramientaPlantilla')
 

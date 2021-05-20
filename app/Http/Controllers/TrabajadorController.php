@@ -16,4 +16,9 @@ class TrabajadorController extends Controller
 
         return view('forms.filiacion.filiacionEidentidad');
     }
+    public function situacionAcademica(){
+        //dd('ingreso');
+
+        return view('forms.situacionAcademica.general');
+    }
 }
