@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('notas', require('./components/TareasComponent.vue').default);
+Vue.component('legajo', require('./components/AperturaLegajo.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,4 +31,7 @@ Vue.component('notas', require('./components/TareasComponent.vue').default);
 
 const app = new Vue({
     el: '#app',
+    // data :{ 
+    //     ruta: 'http://127.0.0.1:8000'
+    // } 
 });

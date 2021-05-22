@@ -63,6 +63,12 @@
                           <span> Usuarios del Sistema</span>
                         </a>
                       </li>
+                      <li>
+                        <a href="{{ url('/trabajadores') }}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Trabajadores</span>
+                        </a>
+                      </li>
                       
                       <li>
                         <a href="{{ url('/parametros') }}">
@@ -91,14 +97,14 @@
                   </a>
                 </li>
                 <li class="bold">
-                  <a class="waves-effect waves-cyan">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-ingreso') }}">
                     <i class="material-icons">person_outline</i>
                     <span class="nav-text">Ingreso o reingreso</span>
                     
                   </a>
                 </li>
                 <li class="bold">
-                  <a class=" waves-effect waves-cyan">
+                  <a class=" waves-effect waves-cyan"  href="{{ url('/gestion-trayectoria') }}">
                     <i class="material-icons">settings_ethernet</i>
                     <span class="nav-text">Trayectoria laboral</span>
                   </a>

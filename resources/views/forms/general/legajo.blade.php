@@ -1,266 +1,92 @@
 @extends('layouts2.app')
 @section('titulo','Gestión de Escalafon')
 @section('main-content')
-
-
-   {{-- <nav>
-    <div class="nav-wrapper">
-      <div class="col s12"> 
-        <a href="#!" class="breadcrumb"> HOME</a>
-        <a href="#!" class="breadcrumb">Second</a>
-        <a href="#!" class="breadcrumb">Third</a>
-      </div>
-    </div>
-  </nav> --}}
-
-
-
-
-<br>
-<div class="row">
-<div class="col s12 m12 l12">
-	<div class="card">
-		<div class="card-header  ">
-			<i class="fa fa-table fa-lg material-icons">receipt</i>
-			<h2>APERTURA DE LEGAJO</h2>
-		</div>
-		<div class="card-header" style="height: 50px; padding-top: 5px; background-color: #f6f6f6">
-			<div class="col s12 m12">
-				<a class="btn-floating waves-effect waves-light grey lighten-5 tooltipped" href="#" data-position="top" data-delay="500" data-tooltip="BUSCAR">
-				<i class="material-icons" style="color: #03a9f4">search</i>
-				</a>
-				<a style="margin-left: 6px"></a>       
-        
-         
-				<a style="margin-left: 6px"></a>   
-			</div>
-		</div>
-		<div class="row cuerpo">
-			<div class="row" >
-				<div class="col s12 m6 l12 ">
-           <div class="col s12 m6 l12 card"> 
-              <div class="col s12 m6 l12">
-                <div class="col s12 m6 l4">
-                  <label for="tipoDocumento">Tipo de documento</label>                 
-                  <select class="browser-default" id="tipoDocumento" name="tipoDocumento" required>
-                    <option value="" disabled selected="">Seleccione</option>
-                  </select>
-                  <div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                </div>
-                <div class="input-field col s12 m6 l4">
-                  <i class="material-icons prefix active">label_outline</i>
-                  <input id="documento" name="documento" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
-                  <label for="documento">Numero de documento</label>
-                  <div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                </div>
-              </div>
-              <div class="col s12 m6 l12">
-                <div class="input-field col s12 m6 l4">
-                  <i class="material-icons prefix active">label_outline</i>
-                  <input id="apellidoP" name="apellidoP" type="text" data-error=".errorTxt1" onkeyup="mayus(this);">
-                  <label for="apellidoP">Primer Apellidos</label>
-                  <div id="error" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                </div>
-                <div class="input-field col s12 m6 l4">
-                  <i class="material-icons prefix active">label_outline</i>
-                  <input id="apellidoM" name="apellidoM" type="text" data-error=".errorTxt1" onkeyup="mayus(this);">
-                  <label for="apellidoM">Segundo Apellido</label>
-                  <div id="error4" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                </div>
-                <div class="input-field col s12 m6 l4">
-                  <i class="material-icons prefix active">label_outline</i>
-                  <input id="nombre" name="nombre" type="text" data-error=".errorTxt1" onkeyup="mayus(this);">
-                  <label for="nombre">Nombres</label>
-                  <div id="error5" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                </div>
-              </div>
-            </div>
-				</div>
-				<div class="col s12 m6 l12">
-					<ul class="collapsible">
-            <li>
-              <div class="collapsible-header"><i class="material-icons">arrow_drop_down</i>BUSQUEDA AVANZADA</div>
-              <div class="collapsible-body z-index: 2 card">
-                <div class="col s12 m6 l12 card   ">
-                  <span>servidor</span>
-                  <div class="col s12 m6 l12">
-                    <div class="col s12 m6 l4">
-                    <label for="condicionLaboral">Condición Laboral </label>                 
-                    <select class="browser-default" id="condicionLaboral" name="condicionLaboral" required>
-                      <option value="" disabled selected="">Seleccione</option>
-                    </select>
-                    <div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                  </div> 
-                  <div class="col s12 m6 l4">
-                    <label for="regimenLaboral">Regimen Laboral</label>                 
-                    <select class="browser-default" id="regimenLaboral" name="regimenLaboral" required>
-                      <option value="" disabled selected="">Seleccione</option>
-                    </select>
-                    <div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                  </div>
-                  <div class="input-field col s12 m6 l4">
-                    <label for="codigoPaza">Código Plaza</label>
-                    <i class="material-icons prefix active">label_outline</i>
-                    <input id="codigoPaza" name="codigoPaza" type="text" data-error=".errorTxt1" placeholder=""   onkeyup="mayus(this);">
-                    <div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                  </div>
-
-                  </div>
-
-                  
-                </div>
-                <div class="col s12 m6 l12   card">
-                  <span>centro</span>
-                  <div class="col s12 m6 l6">
-                    <label for="dre">DRE</label>                 
-                    <select class="browser-default" id="dre" name="dre" required>
-                      <option value="" disabled selected="">Seleccione</option>
-                    </select>
-                    <div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                  </div>
-
-                  <div class="col s12 m6 l6">
-                    <label for="ugel">UGEL</label>                 
-                    <select class="browser-default" id="ugel" name="ugel" required>
-                      <option value="" disabled selected="">Seleccione</option>
-                    </select>
-                    <div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                  </div>
-                  {{-- <div class="col s12 m6 l6">
-                    <label for="idempresa">Código Modular IE</label>                 
-                    <select class="browser-default" id="idempresa" name="idempresa" required>
-                      <option value="" disabled selected="">Seleccione</option>
-                    </select>
-                    <div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                  </div> --}}
-                  <div class="input-field col s12 m6 l6">
-                    <i class="material-icons prefix active">search</i>
-                    <input id="codigoModular" name="codigoModular" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
-                    <label for="codigoModular">Código Modular IE</label>
-                    <div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                  </div>
-                   <div class="input-field col s12 m6 l6">
-                    {{-- <i class="material-icons prefix active">label_outline</i> --}}
-                    <input id="codigoLaboral" name="codigoLaboral" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
-                    <label for="codigoLaboral">Centro Laboral</label>
-                    <div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
-                  </div>
-
-                </div>
-
-
-              </div>
-            </li> 
-					</ul>
-					</div>  
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<br>
+<br> 
+<div id="app">
 <div class="row">
 	<div class="col s12 m12 l12">
 		<div class="card">
+			<div class="card-header  ">
+				<i class="fa fa-table fa-lg material-icons">receipt</i>
+				<h2>APERTURA DE LEGAJO -BUSCAR SERVIDOR </h2>
+			</div>
+			<div class="card-header" style="height: 50px; padding-top: 5px; background-color: #f6f6f6">
+				<div class="col s12 m12">
+					<a  @click="buscarPersona()" class="btn-floating waves-effect waves-light grey lighten-5 tooltipped"  data-position="top" data-delay="500" data-tooltip="BUSCAR">
+					<i class="material-icons" style="color: #03a9f4">search</i>
+					</a>
+					<a style="margin-left: 6px"></a>       
+					<a style="margin-left: 6px"></a>   
+				</div>
+			</div>
 			<div class="row cuerpo">
-				<br>
-				<div class="row">
-					<div class="col s12 m12 l12">
-						<div class="card-content">
-							Existen 0 registros. <br><br>
-							<table id="data-table-simple" class="responsive-table display" cellspacing="0">
-								<thead>
-									<tr>
-										<th>#</th>
-										<th>DOCUMENTO</th>
-										<th>APELLIDOS Y NOMBRES</th>
-										<th>CENTRO LABORAL</th>
-										<th>CONDICIÓN LABORAL</th>
-										<th>SITUACIÓN LABORAL</th>
-										<th>REGIMEN LABORAL</th>
-										<th>ACCIÓN</th>
-									</tr>
-								</thead>
-								<tfoot>
-									<tr>
-										<th>#</th>
-										<th>DOCUMENTO</th>
-										<th>APELLIDOS Y NOMBRES</th>
-										<th>CENTRO LABORAL</th>
-										<th>CONDICIÓN LABORAL</th>
-										<th>SITUACIÓN LABORAL</th>
-										<th>REGIMEN LABORAL</th>
-										<th>ACCIÓN</th>
-									</tr>
-								</tfoot>
-								<tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>75980586</td>
-                    <td>CARLOS RAMIREZ TORRES</td>
-                    <td>BAGUA</td>
-                    <td>CONTRATADO</td>
-                    <td>EN ACTIVO</td>
-                    <td>LEY 299944 -LEY DE REFORMA MAGISTERIAL</td>
-                    <td>
-                      <a href="#" class=" waves-effect waves-light grey lighten-5 tooltipped"  >
-													<i class="material-icons grey-text text-darken-2">settings</i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>36584925</td>
-                    <td>ARAUJO RAMOS WILIAMS</td>
-                    <td>2066 SSEÑOR DE LOS MILAGROS</td>
-                    <td>NOMBRADO</td>
-                    <td>EN ACTIVO</td>
-                    <td>LEY 299944 -LEY DE REFORMA MAGISTERIAL</td>
-                    <td>
-                      <a href="#" class=" waves-effect waves-light grey lighten-5 tooltipped"  >
-													<i class="material-icons grey-text text-darken-2">settings</i></a>
-                    </td>
-                  </tr> 
-                  <tr>
-                    <td>3</td>
-                    <td>06745787</td>
-                    <td>CHAVEZ ROMERO FREDY</td>
-                    <td>2066 SSEÑOR DE LOS MILAGROS</td>
-                    <td>NOMBRADO</td>
-                    <td>EN ACTIVO</td>
-                    <td>LEY 299944 -LEY DE REFORMA MAGISTERIAL</td>
-                    <td>
-                      <a href="#" class=" waves-effect waves-light grey lighten-5 tooltipped"  >
-													<i class="material-icons grey-text text-darken-2">settings</i></a>
-                    </td>
-                  </tr> 
-                  <tr>
-                    <td>4</td>
-                    <td>40599574</td>
-                    <td>HUAMAN DIAS ADRIAN</td>
-                    <td>2066 SSEÑOR DE LOS MILAGROS</td>
-                    <td>NOMBRADO</td>
-                    <td>EN ACTIVO</td>
-                    <td>LEY 299944 -LEY DE REFORMA MAGISTERIAL</td>
-                    <td>
-                      <a href="#" class=" waves-effect waves-light grey lighten-5 tooltipped"  >
-													<i class="material-icons grey-text text-darken-2">settings</i></a>
-                    </td>
-                  </tr> 
-                  <tr>
-                    <td>5</td>
-                    <td>17859654</td>
-                    <td>RAMIREZ GILIO ISABEL</td>
-                    <td>2066 SSEÑOR DE LOS MILAGROS</td>
-                    <td>NOMBRADO</td>
-                    <td>EN ACTIVO</td>
-                    <td>LEY 299944 -LEY DE REFORMA MAGISTERIAL</td>
-                    <td>
-                      <a href="#" class=" waves-effect waves-light grey lighten-5 tooltipped"  >
-													<i class="material-icons grey-text text-darken-2">settings</i></a>
-                    </td>
-                  </tr> 
-								</tbody>
-							</table>
+				<div class="row" >
+					<div class="col s12 m6 l12 ">
+						<div class="col s12 m6 l12 card">
+							<span>BUSCAR SERVIDOR</span>
+							<div class="col s12 m6 l12">
+								<div class="col s12 m6 l4">
+									<label for="tipoDocumento">Tipo de documento</label>                 
+									<select v-model="tipoDocumento" class="browser-default" id="tipoDocumento" name="tipoDocumento" required>
+										<option value="A" disabled  >Seleccione</option>
+										<option  v-for="(documento,index ) in documentos"   :value="documento.iddocumento" v-text="documento.descripcion"> </option>
+									</select>
+									<div id="error_buscar1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+								</div>
+								<div class="input-field col s12 m6 l4">
+									<i class="material-icons prefix active">label_outline</i>
+									<input   v-model="numeroDocumento" id="numeroDocumento" name="numeroDocumento" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
+									<label for="numeroDocumento">Numero de documento</label>
+									<div id="error_buscar2" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row"  v-show="datosEmpleador" >
+					<div class="col s12 m6 l12 ">
+						<div class="col s12 m6 l12 card">
+							<span>DATOS DEL SERVIDOR</span>
+							<div class="col s12 m6 l12">
+								{{-- DATOS DEL SERVIDOR --}}
+								<div class="col s12 m6 l12">
+									<div class="input-field col s12 m6 l4">
+										<i class="material-icons prefix active">assignment_ind</i>
+										<input id="nombre" name="nombre" v-model="nombreServidor" placeholder="" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
+										<label for="nombre">Nombres</label> 
+									</div>
+									<div class="input-field col s12 m6 l4">
+										<i class="material-icons prefix active">assignment_ind</i>
+										<input id="primerApellido" v-model="apellidosServidor" placeholder="" name="primerApellido" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
+										<label for="primerApellido"> Apellidos</label> 
+									</div>
+									<div class="input-field col s12 m6 l4">
+										<i class="material-icons prefix active">work</i>
+										<input id="cargoServidor" v-model="cargoServidor" placeholder="" name="cargoServidor" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
+										<label for="cargoServidor"> Cargo</label> 
+									</div> 
+								</div>
+								{{-- DATOS DEL SERVIDOR --}}
+								{{-- DATOS LABORALES DEL SERVIDOR --}}
+								<div class="col s12 m6 l12">
+									<div class="input-field col s12 m6 l4">
+										<i class="material-icons prefix active">account_balance</i>
+										<input id="areaServidor" name="areaServidor" v-model="areaServidor" placeholder="" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
+										<label for="areaServidor">Area</label> 
+									</div>
+									<div class="input-field col s12 m6 l4">
+										<i class="material-icons prefix active">assignment</i>
+										<input id="modalidadServidor" v-model="modalidadServidor" placeholder="" name="modalidadServidor" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
+										<label for="modalidadServidor"> Modalidad</label> 
+									</div>
+									<div class="input-field col s12 m6 l4">
+										<i class="material-icons prefix active">work</i>
+										<input id="situacionLaboral" v-model="situacionLaboral" placeholder="" name="situacionLaboral" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
+										<label for="situacionLaboral"> Situación Laboral</label> 
+									</div> 
+								</div>
+								{{-- DATOS LABORALES DEL SERVIDOR --}}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -268,4 +94,229 @@
 		</div>
 	</div>
 </div>
+{{-- cuadro para subir archivos --}}
+<div class="row" v-show="datosEmpleador" >
+	<div class="col s12 m12 l12">
+		<div class="card">
+			<div class="card-header  ">
+				<i class="fa fa-table fa-lg material-icons">receipt</i>
+				<h2>APERTURA DE LEGAJO </h2>
+			</div>
+			<div class="card-header" style="height: 50px; padding-top: 5px; background-color: #f6f6f6">
+				<div class="col s12 m12">
+					<a  @click="GuardarResolucion()" class="btn-floating waves-effect waves-light grey lighten-5 tooltipped"  data-position="top" data-delay="500" data-tooltip="BUSCAR">
+					<i class="material-icons" style="color: #03a9f4">check</i>
+					</a>
+					<a style="margin-left: 6px"></a>       
+					<a style="margin-left: 6px"></a>   
+				</div>
+			</div>
+			<div class="row cuerpo">
+				<div class="row"  v-show="datosEmpleador" >
+					<div class="col s12 m6 l8 ">
+						<div class="col s12 m6 l12 card">
+							<span>DATOS PRINCIPALES DE RESOLUCIÓN</span>
+							<br><br> 
+							<form action="" method="POST"  id="formExpediente">
+								<input type="hidden" name="idTrabajador" id="idTrabajador" >
+								<div class="col s12 m6 l12">
+									<div class="col s12 m6 l6">
+										<label for="tipoResolucion">Tipo de Resolucion</label>                 
+										<select v-model="tipoResolucion" class="browser-default" id="tipoResolucion" name="tipoResolucion" required>
+											<option value="" disabled selected="">Seleccione</option>
+											<option value="RESOLUCION DIRECTORIAL"   selected="">RESOLUCION DIRECTORIAL</option>
+										</select> 
+										<div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div> 
+									</div>
+									<div class="input-field col s12 m6 l6">
+										<i class="material-icons prefix active">class</i>
+										<input id="numeroResolucion" v-model="numeroResolucion" placeholder="" name="numeroResolucion" type="number">
+										<label for="numeroResolucion"> NUMERO DE RESOLUCIÓN</label> 
+										<div id="error2" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div> 
+									</div>
+									<div class="input-field col s12 m6 l6">
+										<i class="material-icons prefix active">date_range</i>
+										<input id="fechaResolucion" v-model="fechaResolucion" placeholder="" class="datepicker" name="fechaResolucion" type="text">
+										<label for="fechaResolucion"> FECHA DE RESOLUCIÓN</label> 
+										<div id="error3" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div> 
+									</div>
+									<div class="input-field col s12 m6 l6">
+										<i class="material-icons prefix active">class</i>
+										<input id="foliosResolucion" name="foliosResolucion"  v-model="foliosResolucion" type="number">
+										<label for="foliosResolucion">Folios</label>
+										<div id="error4" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div> 
+									</div>
+									<div class="input-field col s12 m6 l6">
+										<i class="material-icons prefix active">archive</i>
+										<input id="lugarFisicoResolucion" name="lugarFisicoResolucion"  v-model="lugarFisicoResolucion" type="text">
+										<label for="lugarFisicoResolucion">Lugar fisico</label> 
+										<div id="error5" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div> 
+									</div>
+								</div>
+							</form> 
+						</div>
+					</div>
+					<div class="col s12 m6 l4 "> 
+								<div class="card white"> 
+												<span class="card-title">Documentos</span>
+												<div class="row">
+													<div class="file-field input-field col s12">
+														<div class="col s8 m8 l7 center" style="margin: auto; width: 80%">
+															<img src="{{asset('images/avatar/archivos3.png')}}" alt="" id="avatarImage" class="  responsive-img valign profile-image    " style="width: 80px">
+														</div>
+														<br>
+														<div class="file-field input-field col s12 ">
+															<div class="btn light-blue darken-1 ">
+																<span>SUBIR</span>
+																<input type="file" id="archivo" name="archivo" >
+															</div>
+															<div class="file-path-wrapper">
+																<input class="file-path validate" type="text" name="text" id="imagen">
+																<p class="right"><i>Solo se permiten archivos con extensión  
+																	PNG en tamaño maximo 2MB. </i>
+																</p> 
+																<div id="error6" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div> 
+
+															</div>
+														</div>
+													</div>
+												</div> 
+										</div> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{-- cuadro para subir archivos --}}
+</div>
+@endsection
+@section('script')
+<script type="text/javascript" src="{{asset('js/vue-multiselect.min.js')}}"></script>
+
+<script type="text/javascript" >
+  Vue.component('multiselect', window.VueMultiselect.default) 
+ 
+    var app = new Vue({      
+      el: '#app',
+      data: {         
+								numeroDocumento:'72805571',
+								tipoDocumento:"A", 
+								nombreServidor:"",
+								apellidosServidor:"",
+								cargoServidor:"",
+								areaServidor:"",
+								idServidor:"",
+								modalidadServidor:"",
+								situacionLaboral:"",
+								documentos:[],
+								empleado:[],
+								datosEmpleador:false,
+								tipoResolucion:"",
+								numeroResolucion:"",
+								fechaResolucion:"",
+								foliosResolucion:"",
+								lugarFisicoResolucion:"",
+
+      },
+      created: function () {
+         this.listDocumentos();        
+      },
+      methods: {   
+							listDocumentos: function(){
+            var urlTipoDocumentos= '/tipoDocumentos';
+            axios.get(urlTipoDocumentos).then(response => { 
+																this.documentos =response.data 
+            });
+       }, 
+							buscarPersona(){
+
+        								let me=this;  
+																if(this.tipoDocumento=='A'){
+																	console.log('ingreso');
+																	$('#error_buscar1').text('seleccione un tipo de documento'); 	  
+																}else if(this.numeroDocumento==''){
+																	// console.log('nmingreso',this.tipoDocumento,'A');
+																	$('#error_buscar1').text(''); 	   
+																	$('#error_buscar2').text('ingrese un numero de documento'); 	  
+																}else{ 
+																	$('#error_buscar1').text(''); 	   
+																	$('#error_buscar2').text(''); 	 
+																	console.log(this.numeroDocumento);
+																		var url= '/trabajador/'+this.numeroDocumento+'/'+this.tipoDocumento;
+																		axios.get(url).then(function (response) { 
+																								// me.empleado = response.data; 
+																								console.log(response.data["estado"]); 
+																								if(response.data["estado"] =="consulto"){ 
+																										me.nombreServidor=response.data[0][0].nombre; 
+																										me.apellidosServidor=response.data[0][0].apellidos;
+																										me.cargoServidor=response.data[0][0].cargo;
+																										me.idServidor=response.data[0][0].id;
+																										me.datosEmpleador=true; 
+																										console.log('ingreso');
+																								}else{
+																										me.datosEmpleador=false; 
+																										me.nombreServidor="";
+																										me.apellidosServidor="";
+																										me.cargoServidor="";
+																										me.idServidor="";
+																										console.log('no ingreso');
+
+																								}
+																								// console.log(response.data[0].nombre																					
+																		})
+																		.catch(function (error) {
+																						console.log(error);
+																		});  
+																}
+							},
+							GuardarResolucion(){
+
+							$('#idTrabajador').val(this.idServidor); //agregamos el id del vendedor para cargar el form 
+
+
+								var formData = new FormData(); 
+		  				formData.append('archivo', $('#archivo')[0].files[0]);
+								 var url= '/trabajador/expediente'+ '?' + $('#formExpediente').serialize();  
+
+								axios.post(url , formData, {
+									headers: {
+									'Content-Type': 'multipart/form-data'
+									}
+									}).then((response) => {
+									console.log(response.data.archivo)
+
+										if (response.data[0] == "error") {
+										$('#error1').text(''); 	 
+										$('#error2').text(''); 	 
+										$('#error3').text(''); 	 
+										$('#error4').text(''); 	 
+										$('#error5').text(''); 	 
+										$('#error6').text(''); 	 
+										// ( typeof response.data.archivo != "undefined" )? $('#error1').text('cargar archivo') && $('#archivo').focus() : null;
+										( typeof response.data.numeroResolucion != "undefined" )? $('#error2').text(response.data.numeroResolucion) : null;
+										( typeof response.data.fechaResolucion != "undefined" )? $('#error3').text(response.data.fechaResolucion) : null;  
+										( typeof response.data.foliosResolucion != "undefined" )? $('#error4').text(response.data.foliosResolucion) : null;  
+										( typeof response.data.lugarFisicoResolucion != "undefined" )? $('#error5').text(response.data.lugarFisicoResolucion) : null;  
+										( typeof response.data.archivo != "undefined" )? $('#error6').text(response.data.archivo) : null;  
+										}else{ 
+											$('#error1').text(''); 	 
+											$('#error2').text(''); 	 
+											$('#error3').text(''); 	 
+											$('#error4').text(''); 	 
+											$('#error5').text(''); 	 
+											$('#error6').text(''); 	
+											 M.toast({html: 'Expediente Registrado', classes: 'rounded'}); 
+										}
+
+ 
+
+									})
+									.catch((err) => {
+									console.log(err)
+									});   
+							} 
+
+      }
+})
+</script>
 @endsection

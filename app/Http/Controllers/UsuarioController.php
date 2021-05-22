@@ -13,8 +13,7 @@ class UsuarioController extends Controller
 {
     public function index()
     {
-        $valida = 0;
-
+        $valida = 0; 
         //-- Validación para mostrar mensajes al realizar un CRUD
         $validacion = DB::table('validacion')
                         ->select('valor')
@@ -40,6 +39,7 @@ class UsuarioController extends Controller
                     'valida'     => $valida
                 ]);
     }
+
 
     public function create()
     {
@@ -350,6 +350,217 @@ class UsuarioController extends Controller
         $collection = Collection::make($usuario);  
         return response()->json($collection->toJson());   
     }
+
+///  gestion de usuarios trabajadores
+     public function indexTrabajadores()
+    {
+        // dd('llego');
+        $valida = 0; 
+        //-- Validación para mostrar mensajes al realizar un CRUD
+        $validacion = DB::table('validacion')
+                        ->select('valor')
+                        ->where('idusuario',Auth::user()->id)->get();
+
+        foreach ($validacion as $val) {
+            $valida = $val->valor;
+        }
+        if ($valida > 0) {
+            DB::table('validacion')
+            ->where('idusuario',strval(Auth::user()->id))
+            ->update(['valor' => 0]);
+        }
+
+        //--
+
+        $usuarios = DB::table('users')->where('idtipo','TRA' )->get();
+        //dd($usuarios);
+        //$usuarios = DB::table('users')->where('estado', 1)->get();
+
+        return view('forms.trabajadores.lstUsuarios', [
+                    'usuarios'   => $usuarios,
+                    'valida'     => $valida
+                ]);
+    }
+    public function createTrabajador()
+    {
+        $empresa = DB::table('empresa')->where('estado',1)->get();
+        $tipo_documento = DB::table('documento')
+            ->select('iddocumento', 'descripcion', 'dsc_corta')
+            ->where('estado', '1')
+            ->get();
+
+        return view('forms.trabajadores.addUsuario',[
+            'empresa'           => $empresa,
+            'tipo_documento'    => $tipo_documento
+        ]);
+    }
+    
+    public function storeUsuarioTrabajador(Request $request)
+    {
+        // dd($request);
+        $autoriza = null;
+        $rules = array(     
+            'idempresa'     => 'required',
+            'iddocumento'   => 'required',
+            'nro_documento' => 'required',
+            'nombre'        => 'required',
+            'apellidos'     => 'required',
+            // 'usuario'       => 'required|string|max:255',
+            'email'         => 'required|string|email|max:255|unique:users',
+            // 'password'      => 'required|string|min:6|confirmed',
+        );
+
+        $validator = Validator::make ( $request->all(), $rules );
+
+        if ($validator->fails()){
+            $var = $validator->getMessageBag()->toarray();
+            array_push($var, 'error');            
+            return response()->json($var);
+        }
+        //dd("validacion");
+        $idusu = Auth::user()->id;
+        $validacion = DB::table('validacion')->where('idusuario',$idusu)->get();
+        $parametros = DB::table('parametros')->whereIn('tipo_parametro',['CLIENTES','FACTURACION','GENERAL'])->get();
+
+        foreach ($parametros as $parametro) {
+            if ($parametro->parametro == 'AUTORIZACION_ESTADO') {
+                $autoriza = $parametro->valor; 
+            }
+        }
+        //dd($parametros);
+        //dd($autoriza,Auth::user()->idtipo);
+        //$id = count(DB::table('users')->get()) + 1;
+        if ($autoriza == 'SI' and Auth::user()->idtipo != 'ADM') {
+            DB::table('users')
+            ->insert([
+                'idempresa'         => $request->idempresa,
+                'nombre'            => $request->nombre,
+                'apellidos'         => $request->apellidos,
+                'idtipo'            => $request->idtipo,
+                'estado'            => 0,
+                'email'             => $request->email,
+                'password'          => Hash::make($request->password),
+                'usuario'           => $request->usuario,
+                'iddocumento'       => $request->iddocumento,
+                'nro_documento'     => $request->nro_documento,
+                'direccion'         => $request->direccion,
+                'cargo'             => $request->cargo,
+                'avatar'            => null,
+                'telefono'          => $request->telefono,
+                'glosa'             => $request->glosa,
+                'idusuario'         => Auth::user()->id,
+                'created_at'        => date('Y-m-d h:m:s')
+            ]);
+        }else{
+            DB::table('users')
+            ->insert([
+                'idempresa'         => $request->idempresa,
+                'nombre'            => $request->nombre,
+                'apellidos'         => $request->apellidos,
+                'idtipo'            => $request->idtipo,
+                'estado'            => 1,
+                'email'             => $request->email,
+                'password'          => Hash::make("123456"),
+                'usuario'           => $request->nombre,
+                'iddocumento'       => intval($request->iddocumento),
+                'nro_documento'     => $request->nro_documento,
+                'cargo'             => $request->cargo,
+                'direccion'         => $request->direccion,
+                'avatar'            => null,
+                'telefono'          => $request->telefono,
+                'glosa'             => $request->glosa,
+                'idusuario'         => Auth::user()->id,
+                'created_at'        => date('Y-m-d h:m:s')
+            ]);
+        }
+        
+        
+
+        if (count($validacion) === 0) {
+            DB::table('validacion')
+            ->insert([
+                'idusuario' => $idusu,
+                'valor'     => 1
+            ]);
+        }else{
+            DB::table('validacion')
+            ->where('idusuario',strval($idusu))
+            ->update(['valor' => 1]);
+            
+        }
+
+        return redirect('/trabajadores');
+    }
+    public function showUsuarioTrabjador($id)
+    {
+        $usuario = DB::table('users')
+                    ->where('id',$id)->get();
+        $empresa = DB::table('empresa')->where('estado',1)->get();
+        $tipo_documento = DB::table('documento')
+            ->select('iddocumento', 'descripcion', 'dsc_corta')
+            ->where('estado', '1')
+            ->get();
+
+        return view('forms.trabajadores.updUsuario',[
+            'usuario'           => $usuario,
+            'empresa'           => $empresa,
+            'tipo_documento'    => $tipo_documento
+        ]);
+    }
+    public function updateUsuarioTrabajador(Request $request)
+    { 
+         $rules = array(     
+            'idempresa'     => 'required',
+            'nro_documento' => 'required',
+            'nombre'        => 'required',
+            'apellidos'     => 'required',
+            // 'usuario'       => 'required|string|max:255',
+            'email'         => 'required|string|email|max:255',
+        );
+
+        $validator = Validator::make ( $request->all(), $rules );
+
+        if ($validator->fails()){
+            $var = $validator->getMessageBag()->toarray();
+            array_push($var, 'error');            
+            return response()->json($var);
+        }
+        
+
+        DB::table('users')
+        ->where('id',strval($request->id))
+        ->update([
+            'idempresa'         => $request->idempresa,
+            'idtipo'            => $request->idtipo,
+            'nombre'			=> $request->nombre,
+            'apellidos'         => $request->apellidos,
+            'email'            	=> $request->email,
+            // 'usuario'         	=> $request->usuario,
+            'iddocumento'       => $request->iddocumento,
+            'direccion'         => $request->direccion,
+            'nro_documento'     => $request->nro_documento,
+            'cargo'        		=> $request->cargo,
+            'avatar'            => null,
+            'telefono'    		=> $request->telefono,
+            'glosa'             => $request->glosa 
+        ]);
+                
+        $idusu = Auth::user()->id;
+        $validacion = DB::table('validacion')->where('idusuario',$idusu)->get();
+
+        
+        if (Auth::user()->idtipo == 'ADM') {
+            if (count($validacion) > 0) {           
+                DB::table('validacion')
+                ->where('idusuario',strval($idusu))
+                ->update(['valor' => 2]);  
+            }
+        }
+
+        return redirect('/trabajadores');
+    }
+
+
 
 
 }

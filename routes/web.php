@@ -20,6 +20,7 @@ Auth::routes();
 
 Route::get('/','Auth\LoginController@showLoginForm')->name('/');
 Route::get('/login','Auth\LoginController@showLoginForm')->name('login'); 
+// Route::get('/cerrar','HomeController@cerrar')->name('cerrar'); 
 Route::post('/herramientaPlantilla','HomeController@herramientaPlantilla')->name('herramientaPlantilla');
 
 
@@ -40,6 +41,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/usuario/updContra','UsuarioController@updContra');
     Route::post('usuario/verificarID','UsuarioController@verificarID');
     Route::post('usuario/verificarUsuario','UsuarioController@verificarUsuario'); 
+    //gestion de usuario trabajador
+    Route::get('/trabajadores','UsuarioController@indexTrabajadores');
+    Route::get('/trabajador/nuevo','UsuarioController@createTrabajador');
+    Route::post('/trabajador/grabar','UsuarioController@storeUsuarioTrabajador');
+    Route::get('/trabajador/mostrar/{id}','UsuarioController@showUsuarioTrabjador');
+    Route::post('/trabajador/actualizar','UsuarioController@updateUsuarioTrabajador');  
     //Empresa
     Route::get('/empresa','EmpresaController@index');
     Route::get('/empresa/nuevo','EmpresaController@create');
@@ -51,7 +58,24 @@ Route::group(['middleware' => 'auth'], function(){
     // Route::get('/gestion-trabajador','TrabajadorController@index')->name('gestion-trabajador'); 
     Route::get('/gestion-fileacion','TrabajadorController@filiacionEidentidad')->name('gestion-fileacion');
     Route::get('/gestion-academica','TrabajadorController@situacionAcademica')->name('gestion-academica'); 
-    Route::get('/gestion-legajo','LegajoController@index')->name('gestion-legajo');
+    Route::get('/gestion-legajo','LegajoController@index')->name('gestion-legajo'); 
+    Route::get('/gestion-ingreso','TrabajadorController@ingresoReingreso')->name('gestion-ingreso'); 
+    Route::get('/gestion-trayectoria','TrabajadorController@trayectoria')->name('gestion-trayectoria'); 
+
+    ///herrameintas pR list 
+    Route::get('/tipoDocumentos','HerramientasController@listarTiposDocumentos');
+    Route::get('/trabajador/{id}/{idDoc}','TrabajadorController@buscarTrabajador');
+    Route::post('/trabajador/expediente','TrabajadorController@store');
+
+
+
+   
+
+
+
+   
+
+    
 
 
 });

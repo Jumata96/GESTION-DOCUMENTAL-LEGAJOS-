@@ -36,7 +36,7 @@
 				</a>
 				<a style="margin-left: 6px"></a>   
 
-        <a class="btn-floating waves-effect waves-light grey lighten-5 tooltipped" href="{{ url('/empresa/nuevo') }}" data-position="top" data-delay="500" data-tooltip="APERTURA DE LEGAJO">
+        <a class="btn-floating waves-effect waves-light grey lighten-5 tooltipped" href="{{ url('/gestion-legajo') }}" data-position="top" data-delay="500" data-tooltip="APERTURA DE LEGAJO">
 				<i class="material-icons" style="color: #03a9f4">insert_drive_file</i>
 				</a>
 				<a style="margin-left: 6px"></a>   

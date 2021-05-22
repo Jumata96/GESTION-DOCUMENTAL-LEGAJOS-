@@ -1,13 +1,13 @@
 <script type="text/javascript">
     //------JPaiva--11-10-2018-------------GRABAR-----------------------------------
     
-    $("#upd").click(function(e){
+    $("#add").click(function(e){
         e.preventDefault();
 
         var data = $('#myForm').serializeArray();
 
         $.ajax({
-            url: "{{ url('/trabajador/actualizar') }}",
+            url: "{{ url('/usuario/grabar') }}",
             type:"POST",
             beforeSend: function (xhr) {
                 var token = $('meta[name="csrf-token"]').attr('content');
@@ -17,7 +17,7 @@
                 }
             },
            type:'POST',
-           url:"{{ url('/trabajador/actualizar') }}",
+           url:"{{ url('/usuario/grabar') }}",
            data:data,
 
            success:function(data){
@@ -28,16 +28,14 @@
                 ( typeof data.apellidos != "undefined" )? $('#error4').text(data.apellidos) : null;
                 ( typeof data.usuario != "undefined" )? $('#error5').text(data.usuario) : null;
                 ( typeof data.email != "undefined" )? $('#error6').text(data.email) : null;
+                ( typeof data.password != "undefined" )? $('#error7').text(data.password) : null;
+                ( typeof data.idtipo != "undefined" )? $('#error8').text(data.idtipo) : null;
+                ( typeof data.idempresa != "undefined" )? $('#error9').text(data.idempresa) : null; 
               } else {   
 
                 //alert(data.success);
-                @if(Auth::user()->idtipo == 'ADM')
-                  window.location="{{ url('/trabajadores') }}";
-                @else
-                  setTimeout(function() {
-                    M.toast({ html: '<span>Registro actualizado</span>'});
-                  }, 2000);  
-                @endif
+                window.location="{{ url('/usuarios') }}";
+
               }
               
            },

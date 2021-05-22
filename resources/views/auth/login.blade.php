@@ -59,8 +59,9 @@
 
 
     <div class="card-panel" id="pagina-login" style="width: 25rem; padding: 0">
-      <div class="card-header center white-text blue darken-2"; style="border-bottom: 2px solid #005687; height: 60px; padding-top: 8px">
-        <img src="{{asset('images/logo/InnovaWifi3.png')}}" alt="InnovaWifi" style=" height: 43px">
+      <div class="card-header center white-text blue darken-2"; style="border-bottom: 2px solid #005687; height: 60px; padding-top: 4px;padding-bottom: 4px;">
+        {{-- <img src="{{asset('images/logo/InnovaWifi3.png')}}" alt="InnovaWifi" style=" height: 43px"> --}}
+         <h4><b>ESCALA</b>FÓN</h4>
       </div>
       <form action="{{ url('/login') }}" method="post" style="padding: 10px">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
