@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Carbon\Carbon;
+
 
 class LoginController extends Controller
 {
@@ -40,9 +42,18 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         session()->flash('trabajador_Id');
+        $trabajador_id = session('trabajador_Id'); 
+        $fecha_corte = Carbon::createFromDate(2021,6,25)->addDays(15); 
+        $fecha_actual =Carbon::now(); 
+        session()->flash('trabajador_Id');
 
-        $trabajador_id = session('trabajador_Id');
+        if($fecha_actual > $fecha_corte){ 
+            return view('auth.trialOut');
+
+        }else{
+            return view('auth.login');
+        }
         
-        return view('auth.login');
+        
     }
 }

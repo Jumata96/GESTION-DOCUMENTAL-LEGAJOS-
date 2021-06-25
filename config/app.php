@@ -179,7 +179,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class, 
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class, 
+         \sbamtr\LaravelSourceEncrypter\SourceEncryptServiceProvider::class,
         
 
 

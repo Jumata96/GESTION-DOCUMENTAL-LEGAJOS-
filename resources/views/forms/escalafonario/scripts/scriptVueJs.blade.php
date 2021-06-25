@@ -57,20 +57,10 @@ var app = new Vue({
 					{   
 
 						if (response.data[0] == "error")
-						{ 
-								(typeof response.data.archivo != "undefined") ? $('#error_archivoResolucionLaboral').text(response.data.archivo): null;
-							(typeof response.data.anotacionesResolucion != "undefined") ? $('#error_anotacionesResolucion').text(response.data.anotacionesResolucion): null; 
-							(typeof response.data.areaLaboral != "undefined") ? $('#error_areaLaboral').text(response.data.areaLaboral): null; 
-							(typeof response.data.cargoLaboral != "undefined") ? $('#error_cargoLaboral').text(response.data.cargoLaboral): null; 
-							(typeof response.data.fechaResolucion != "undefined") ? $('#error_fechaResolucion').text(response.data.fechaResolucion): null; 
-							(typeof response.data.fechaResolucionInicio != "undefined") ? $('#error_fechaResolucionInicio').text(response.data.fechaResolucionInicio): null; 
-							(typeof response.data.fechaResolucionFin != "undefined") ? $('#error_fechaResolucionFin').text(response.data.fechaResolucionFin): null; 
-							(typeof response.data.jornadaLaboral != "undefined") ? $('#error_jornadaLaboral').text(response.data.jornadaLaboral): null; 
-							(typeof response.data.numeroFoliosResolucionLaboral != "undefined") ? $('#error_numeroFoliosResolucionLaboral').text(response.data.numeroFoliosResolucionLaboral): null; 
-							(typeof response.data.numeroResolucion != "undefined") ? $('#error_numeroResolucion').text(response.data.numeroResolucion): null; 
-							(typeof response.data.regimenLaboral != "undefined") ? $('#error_regimenLaboral').text(response.data.regimenLaboral): null; 
-							(typeof response.data.situacionLaboral != "undefined") ? $('#error_situacionLaboral').text(response.data.situacionLaboral): null;   
-							(typeof response.data.tipoResolucion != "undefined") ? $('#error_tipoResolucion').text(response.data.tipoResolucion): null;   
+						{   
+							(typeof response.data.motivoInformeCrear != "undefined") ? $('#error_motivoInformeCrear').text(response.data.motivoInformeCrear): null; 
+							(typeof response.data.nombreDelSolicitante != "undefined") ? $('#error_nombreDelSolicitante').text(response.data.nombreDelSolicitante): null;   
+							(typeof response.data.numeroExpedienteCrear != "undefined") ? $('#error_numeroExpedienteCrear').text(response.data.numeroExpedienteCrear): null;    
 						
 						}
 						else

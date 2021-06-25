@@ -34,21 +34,28 @@
                       <i class="material-icons prefix ">archive</i>  
                       <input id="motivoInformeCrear" v-model="motivoInformeCrear" placeholder=""  name="motivoInformeCrear" type="text">
                       <label for="motivoInformeCrear">Motivo Informe</label>
+                      <div id="error_motivoInformeCrear" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
                     </div>
                     <div class="input-field col s12 m6 l6">
                       <i class="material-icons prefix ">date_range</i>
                       <input id="numeroExpedienteCrear" v-model="numeroExpedienteCrear" placeholder=""  name="numeroExpedienteCrear" type="text">
-                      <label for="numeroExpedienteCrear">NUMERO DE EXPEDIENTE</label>  
+                      <label for="numeroExpedienteCrear">NUMERO DE EXPEDIENTE</label>
+                      <div id="error_numeroExpedienteCrear" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+
                     </div>
                     <div class="input-field col s12 m6 l6">
                       <i class="material-icons prefix ">assignment_ind</i>
                       <input id="nombreDelSolicitante" v-model="nombreDelSolicitante" placeholder=""  name="nombreDelSolicitante" type="text">
                       <label for="nombreDelSolicitante"> NOMBRE DEL SOLICITANTE</label>  
+                      		<div id="error_nombreDelSolicitante" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+
                     </div>
                     <div class="input-field col s12 m6 l6">
                       <i class="material-icons prefix ">create</i> 
                       <textarea name="anotacionesInformeCrear" class="materialize-textarea" id="anotacionesInformeCrear" cols="30" rows="10"></textarea>
                       <label for="anotacionesInformeCrear">Anotaciones</label>
+                      		<div id="error_anotacionesInformeCrear" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+
                     </div>
                     {{-- 
                     <div class="input-field col s12 m6 l6">

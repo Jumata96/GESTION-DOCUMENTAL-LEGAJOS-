@@ -38,7 +38,6 @@ class InformeEscalafonarioController extends Controller
     //   "merito" => "on"
     //   "Demerito" => "on"
     //   "otros" => "on"
-        dd($request->filiacion,$request);
          $rules = array(        
                 'motivoInformeCrear'                  => 'required', 
                 'numeroExpedienteCrear'                  => 'required', 
@@ -51,9 +50,18 @@ class InformeEscalafonarioController extends Controller
                 array_push($var, 'error');
                 //return response::json(array('errors'=> $validator->getMessageBag()->toarray()));
                 return response()->json($var);
-            }  
-        // $request->filiacion
+            }else{
+                $trabajador_id = session('trabajador_Id');  
+                $trabajador= DB::table('users')->where('id',intval($trabajador_id))->get();
+                $direccion= DB::table('direcciones')->where('id_trabajador',intval($trabajador_id))->get();
+                dd($trabajador,$direccion);
 
+                dd($request->filiacion,$request);
+            }
 
+             
+            
+        
+             
     }
 }
