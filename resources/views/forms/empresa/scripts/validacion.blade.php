@@ -40,9 +40,10 @@
 
   $("#idempresa").focusout(function() {
     focus++;
-    console.log(focus);
+    // console.log(focus);
 
     var data = $(this).val();
+    console.log(data);
 
           $.ajax({
               url: "{{ url('/empresa/verificarID') }}",

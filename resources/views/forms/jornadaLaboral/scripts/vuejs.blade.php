@@ -1,0 +1,322 @@
+<script type = "text/javascript" src = "{{asset('js/vue-multiselect.min.js')}}"> </script>
+
+	<script type = "text/javascript">
+	Vue.component('multiselect', window.VueMultiselect.default)
+
+var app = new Vue({
+		el: '#app',
+		data: {  
+			nombre  :"",   
+		},
+		created: function () { 
+			this.listarSituacionLaboral();
+		},
+		methods: { 
+	listarSituacionLaboral()
+	{ 
+				// var url = '/fileacion-DJ';
+		var url = '/JornadaLaboral/list';	
+		axios.get(url).then((response) =>
+			{  
+				if (response.data.length > 0)
+				{
+     console.log('ingreso');
+     console.log(response.data);
+					   this.pintarTablaSituacionLaboral(response.data);
+						// this.	tablaDocumentos=response.data;
+				}else{
+					  document.getElementById("tbodyJornadaLaboral").innerHTML = "";
+					  $('#tablaJornadaLaboral').DataTable();
+				}
+			})
+			.catch((err) =>
+			{
+				console.log(err)
+			});
+
+	},
+	agregarJornadaLaboral(){   
+		var url = '/JornadaLaboral/agregar';
+  var datosArray=$('#myFormSituacionAcademica').serialize();
+		axios.post(url,datosArray).then((response) =>
+			{   
+				if (response.data[0] == "error")
+				{  
+     (typeof response.data.nombreJornadaLaboral != "undefined") ? $('#error_nombreJornadaLaboral').text(response.data.nombreJornadaLaboral): null; 
+     (typeof response.data.detalleJornadaLaboral != "undefined") ? $('#error_detalleJornadaLaboral').text(response.data.detalleJornadaLaboral): null;  
+     (typeof response.data.finJornada != "undefined") ? $('#error_finJornada').text(response.data.finJornada): null;  
+     (typeof response.data.inicioJornada != "undefined") ? $('#error_inicioJornada').text(response.data.inicioJornada): null;  
+				}
+				else
+				{
+     $('#error_nombreJornadaLaboral').text("");
+     $('#error_detalleJornadaLaboral').text("");
+					$('#error_inicioJornada').text("");
+     $('#error_finJornada').text("");
+					$('#nombreJornadaLaboral').val("");
+     $('#detalleJornadaLaboral').val("");
+					$('#inicioJornada').val("");
+     $('#finJornada').val("");
+					M.toast({html: 'JORNADA LABORAL REGISTRADO', classes: 'rounded'}); 
+					$('#modalAddJornadaLaboral').modal('close');
+					this.listarSituacionLaboral(); 
+				}
+
+			})
+			.catch((err) =>
+			{
+				console.log(err)
+			});
+
+
+
+	}, 
+	eliminarSituacionLaboral()
+	{  
+			var situacionLaboralCodigo = $('#nivelSituacionLaboral').val();  
+			var url = '/JornadaLaboral/eliminar' ; 
+				axios.post(url,{id:situacionLaboralCodigo}).then((response) =>
+				{ 
+					 M.toast({html: 'REGISTRO ELIMINADO', classes: 'rounded'}); 
+					 this.listarSituacionLaboral(); 
+				}).catch((err) =>
+				{
+					console.log(err)
+				}); 
+	}, 
+ desabilitarSituacionLaboral()
+ {
+  var situacionLaboralCodigo = $('#nivelSituacionLaboral').val();  
+			var url = '/JornadaLaboral/desactivar' ; 
+				axios.post(url,{id:situacionLaboralCodigo}).then((response) =>
+				{ 
+					 M.toast({html: 'REGISTRO DESACTIVADO', classes: 'rounded'}); 
+					 this.listarSituacionLaboral(); 
+				}).catch((err) =>
+				{
+					console.log(err)
+				});
+
+ },
+ habilitarSituacionLaboral()
+ {
+   var situacionLaboralCodigo = $('#nivelSituacionLaboral').val();  
+			var url = '/JornadaLaboral/habilitar' ; 
+				axios.post(url,{id:situacionLaboralCodigo}).then((response) =>
+				{ 
+					 M.toast({html: 'REGISTRO ACTIVO', classes: 'rounded'}); 
+					 this.listarSituacionLaboral(); 
+				}).catch((err) =>
+				{
+					console.log(err)
+				});
+
+ },
+ mostrarSituacionLaboral(id)
+ {
+
+  $('#codigoRegistro').val(id);  
+
+			var url = '/JornadaLaboral/consultar' ; 
+				axios.post(url,{codigo:id}).then((response) =>
+				{  
+     let registro = response.data[0];
+     console.log('registro',registro);
+      $('#nombreJornadaLaboralUpd').val(registro.nombre);
+      $('#detalleJornadaLaboralUpd').val(registro.descripcion);  
+      $('#finJornadaUpd').val(registro.hora_fin);  
+      $('#inicioJornadaUpd').val(registro.hora_inicio);  
+      $('#modalupdJornadaLaboral').modal('open');
+					 // this.listarSituacionLaboral(); 
+				}).catch((err) =>
+				{
+					console.log(err)
+				});
+
+  
+
+ }, 
+ actualizarSituacionLaboral()
+ {
+  		var url = '/JornadaLaboral/actualizar';
+  var datosArray=$('#myFormSituacionAcademicaUpd').serialize();
+		axios.post(url,datosArray).then((response) =>
+			{   
+				if (response.data[0] == "error")
+				{  
+     (typeof response.data.nombreJornadaLaboralUpd != "undefined") ? $('#error_nombreJornadaLaboralUpd').text(response.data.nombreJornadaLaboralUpd): null; 
+     (typeof response.data.detalleJornadaLaboralUpd != "undefined") ? $('#error_detalleJornadaLaboralUpd').text(response.data.detalleJornadaLaboralUpd): null; 
+					(typeof response.data.finJornadaUpd != "undefined") ? $('#error_finJornadaUpd').text(response.data.finJornadaUpd): null;  
+     (typeof response.data.inicioJornadaUpd != "undefined") ? $('#error_inicioJornadaUpd').text(response.data.inicioJornadaUpd): null;   
+				}
+				else
+				{
+     $('#error_nombreJornadaLaboralUpd').text("");
+     $('#error_detalleJornadaLaboralUpd').text("");
+					$('#error_inicioJornadaUpd').text("");
+     $('#error_finJornadaUpd').text("");
+					$('#nombreJornadaLaboralUpd').val("");
+     $('#detalleJornadaLaboralUpd').val("");
+					$('#inicioJornadaUpd').val("");
+     $('#finJornadaUpd').val("");
+					M.toast({html: 'JORNADA LABORAL ACTUALIZADO', classes: 'rounded'}); 
+					$('#modalupdJornadaLaboral').modal('close');
+					this.listarSituacionLaboral(); 
+				}
+
+			})
+			.catch((err) =>
+			{
+				console.log(err)
+			});
+
+
+
+ },
+	 pintarTablaSituacionLaboral(array)
+	{
+               
+ 
+		var table = $('#tablaJornadaLaboral').DataTable();
+		table.destroy(); //eliminamos los estilos y datos cargados en la tabla 
+		// this.limpiarTablaDirecciones(); //eliminamos los datos de la tabla
+  document.getElementById("tbodyJornadaLaboral").innerHTML = "";
+		let contadorEleemntos = 0;
+		array.forEach(elemento =>
+		{ 
+			contadorEleemntos += 1; 
+   botonVer ='<a  onclick="verSituacionLaboral('+ elemento['codigo']+');" class="waves-effect waves-light grey lighten-5 tooltipped" data-position="top" data-delay="500" data-tooltip="Ver"><i class="material-icons" style="color: #7986cb ">visibility</i></a>';
+
+   botonEliminar ='<a onclick="eliminarSituacionLaboral('+ elemento['codigo']+');"  class="waves-effect waves-light grey lighten-5 tooltipped modal-trigger" data-position="top" data-delay="500" data-tooltip="Eliminar"><i class="material-icons" style="color:#dd2c00">remove</i></a>';
+
+   botonDesabilitar=' <a  onclick="desabilitarSituacionLaboral('+ elemento['codigo']+');"  class="waves-effect waves-light grey lighten-5 tooltipped modal-trigger" data-position="top" data-delay="500"   data-tooltip="Desabilitar"><i class="material-icons" style="color: #757575 ">clear</i></a>';
+   
+   botonHabilitar='<a  onclick="habilitarSituacionLaboral('+ elemento['codigo']+');"  class="waves-effect waves-light grey lighten-5 tooltipped modal-trigger" data-position="top" data-delay="500" data-tooltip="Habilitar"><i class="material-icons" style="color: #2e7d32 ">check</i></a>'; 
+               
+
+   if (elemento.estado==1) {
+    console.log('ingresa 1');
+    estado='<div   class="chip center-align teal accent-4 white-text" style="width: 70%"><b>ACTIVO</b></div>';
+    botonAccion=botonDesabilitar; 
+   } else {
+    estado='<div   class="chip center-align" style="width: 70%"><b>NO DISPONIBLE</b><i class="material-icons"></i></div>';
+    botonAccion=botonHabilitar; 
+   } 
+			$("#tbodyJornadaLaboral").append( 
+														'<tr id="elemento'+contadorEleemntos+'">'+
+                '<td>'+contadorEleemntos+'</td>'+
+                '<td>' + elemento.nombre + '</td>'+
+                '<td>' + elemento.descripcion + '</td>'+
+                '<td>' + elemento.fecha_creacion + '</td>'+ 
+                '<td style="white-space: nowrap;" >'+estado+'</td>'+
+                '<td><div>'+botonVer+botonEliminar+botonAccion+'</div></td>'+ 
+														'</tr>'
+			);  
+		});
+    // $('#tablaDocumentos').DataTable();
+    $('.tooltipped').tooltip();//AGREGAMOS LOS TOOLTIPS A LOS NUEVOS ELEMENTOS DE LA TABLA
+
+				$('#tablaJornadaLaboral').DataTable(
+		{ //cargamos los estilos a la tabla con los nuevos datos(tr) 
+			"responsive": true,
+      language: {
+                  search: "Buscar en la tabla:",
+                  paginate: {
+                      first:      "Primero",
+                      previous:   "Anterior",
+                      next:       "Siguente",
+                      last:       "Anterior"
+                  },
+                  processing:     "Traitement en cours...",
+                  lengthMenu:    "Mostrar _MENU_registros",  
+                  info: "Visualización  _PAGE_ de _PAGES_",  
+                  infoEmpty:      "Visualización  0 a 0 de 0 registros",
+                  infoFiltered:   "(filtre de _MAX_ registros en total total)", 
+                  zeroRecords:    "No se encuentran registros ",
+        
+             
+              }
+		});
+
+
+
+	},  
+		}
+	}) 
+ </script>
+	<script> 
+function eliminarSituacionLaboral(valor)
+{	 
+	$('#nivelSituacionLaboral').val(valor); 
+	$('#modalEliminarSituacionLaboral').modal('open');
+	
+}
+function desabilitarSituacionLaboral(valor)
+{	 
+	$('#nivelSituacionLaboral').val(valor); 
+	$('#modalDesactivarSituacionLaboral').modal('open');
+	
+}
+function habilitarSituacionLaboral(valor)
+{	 
+	$('#nivelSituacionLaboral').val(valor); 
+	$('#modalHabilitarSituacionLaboral').modal('open');
+	
+}
+function verSituacionLaboral(valor)
+{	  
+ 		app.$options.methods.mostrarSituacionLaboral(valor);  
+	
+}
+$("#finJornada").focusout(function ()
+{
+  var tiempo_inicio =$('#inicioJornada').val(); 
+  var tiempo_fin =$('#finJornada').val(); 
+		if(tiempo_inicio >tiempo_fin){ 
+	  $('#error_finJornada').text("el tiempo de fin de jornada tiene que ser mayor al de inicio ");
+ 	 var tiempo_fin =$('#finJornada').val(""); 
+		}else{
+	  $('#error_finJornada').text(""); 
+		} 
+});
+$("#inicioJornada").focusout(function ()
+{
+  var tiempo_inicio =$('#inicioJornada').val(); 
+  var tiempo_fin =$('#finJornada').val();  
+		if(tiempo_inicio>tiempo_fin){  
+	  $('#error_inicioJornada').text("el tiempo de inicio de jornada tiene que ser menor al de fin ,ingrese primero el de fin de jornada ");
+ 	 var tiempo_fin =$('#inicioJornada').val(""); 
+		}else{
+				  $('#error_inicioJornada').text(""); 
+		} 
+});
+$("#finJornadaUpd").focusout(function ()
+{
+  var tiempo_inicio =$('#inicioJornadaUpd').val(); 
+  var tiempo_fin =$('#finJornadaUpd').val(); 
+		if(tiempo_inicio >tiempo_fin){ 
+	  $('#error_finJornadaUpd').text("el tiempo de fin de jornada tiene que ser mayor al de inicio ");
+ 	 var tiempo_fin =$('#finJornadaUpd').val(""); 
+		}else{
+	  $('#error_finJornadaUpd').text(""); 
+		} 
+});
+$("#inicioJornadaUpd").focusout(function ()
+{
+  var tiempo_inicio =$('#inicioJornadaUpd').val(); 
+  var tiempo_fin =$('#finJornadaUpd').val();  
+		if(tiempo_inicio>tiempo_fin){  
+	  $('#error_inicioJornadaUpd').text("el tiempo de inicio de jornada tiene que ser menor al de fin ,ingrese primero el de fin de jornada ");
+ 	 var tiempo_fin =$('#inicioJornadaUpd').val(""); 
+		}else{
+				  $('#error_inicioJornadaUpd').text(""); 
+		} 
+});
+
+
+// $('#eliminarNivelAcademico').on('click', function ()
+// {
+// 		app.$options.methods.eliminarSituacionLaboral();  
+// });
+
+	</script>

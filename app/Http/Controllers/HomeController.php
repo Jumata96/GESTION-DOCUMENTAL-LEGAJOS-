@@ -28,6 +28,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function cerrar(){
+    // dd('entro',session());
+        session()->flash('trabajador_Id' );
+        Auth::logout();
+
+       return redirect('/');
+    }
 
     public function herramientaPlantilla(Request $req)
     {  

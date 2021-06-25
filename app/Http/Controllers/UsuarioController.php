@@ -384,29 +384,43 @@ class UsuarioController extends Controller
     public function createTrabajador()
     {
         $empresa = DB::table('empresa')->where('estado',1)->get();
+        $situacion_laboral = DB::table('situacion_laboral')->where('estado',1)->get();
+        $regimen_laboral = DB::table('regimen_laboral')->where('estado',1)->get();
+        $cargo_laboral = DB::table('cargo_laboral')->where('estado',1)->get();
+        $area_laboral = DB::table('area_laboral')->where('estado',1)->get();
         $tipo_documento = DB::table('documento')
             ->select('iddocumento', 'descripcion', 'dsc_corta')
             ->where('estado', '1')
             ->get();
+            //  dd( $cargo_laboral);
 
         return view('forms.trabajadores.addUsuario',[
             'empresa'           => $empresa,
-            'tipo_documento'    => $tipo_documento
+            'tipo_documento'    => $tipo_documento,
+            'situacion_laboral'    => $situacion_laboral,
+            'regimen_laboral'    => $regimen_laboral,
+            'cargo_laboral'    => $cargo_laboral,
+            'area_laboral'    => $area_laboral,
         ]);
     }
     
     public function storeUsuarioTrabajador(Request $request)
     {
-        // dd($request);
+        //  dd($request);
         $autoriza = null;
         $rules = array(     
-            'idempresa'     => 'required',
-            'iddocumento'   => 'required',
-            'nro_documento' => 'required',
-            'nombre'        => 'required',
-            'apellidos'     => 'required',
-            // 'usuario'       => 'required|string|max:255',
-            'email'         => 'required|string|email|max:255|unique:users',
+            'idempresa'         => 'required',
+            'iddocumento'       => 'required',
+            'nro_documento'     => 'required',
+            'nombre'            => 'required',
+            'idSexo'            => 'required',
+            'apellidos'         => 'required',
+            'situacionLaboral'  => 'required',
+            'regimenLaboral'    => 'required',
+            'cargo'             => 'required',
+            'areaLaboral'       => 'required',
+            'tipoTrabajador'    => 'required', 
+            'email'             => 'required|string|email|max:255|unique:users',
             // 'password'      => 'required|string|min:6|confirmed',
         );
 
@@ -436,11 +450,9 @@ class UsuarioController extends Controller
                 'idempresa'         => $request->idempresa,
                 'nombre'            => $request->nombre,
                 'apellidos'         => $request->apellidos,
-                'idtipo'            => $request->idtipo,
+                'idtipo'            => $request->tipoTrabajador,
                 'estado'            => 0,
-                'email'             => $request->email,
-                'password'          => Hash::make($request->password),
-                'usuario'           => $request->usuario,
+                'email'             => $request->email,  
                 'iddocumento'       => $request->iddocumento,
                 'nro_documento'     => $request->nro_documento,
                 'direccion'         => $request->direccion,
@@ -457,19 +469,23 @@ class UsuarioController extends Controller
                 'idempresa'         => $request->idempresa,
                 'nombre'            => $request->nombre,
                 'apellidos'         => $request->apellidos,
-                'idtipo'            => $request->idtipo,
+                'idtipo'            => $request->tipoTrabajador,
                 'estado'            => 1,
                 'email'             => $request->email,
                 'password'          => Hash::make("123456"),
-                'usuario'           => $request->nombre,
+                'usuario'           => $request->nro_documento,
                 'iddocumento'       => intval($request->iddocumento),
                 'nro_documento'     => $request->nro_documento,
                 'cargo'             => $request->cargo,
                 'direccion'         => $request->direccion,
-                'avatar'            => null,
+                'avatar'            => null, 
                 'telefono'          => $request->telefono,
                 'glosa'             => $request->glosa,
                 'idusuario'         => Auth::user()->id,
+                'area_trabajador'   => $request->areaLaboral,
+                'situacion_laboral' => $request->situacionLaboral,  
+                'regimen_laboral'   => $request->regimenLaboral,
+                'SEXO'             => $request->idSexo,
                 'created_at'        => date('Y-m-d h:m:s')
             ]);
         }
@@ -496,6 +512,10 @@ class UsuarioController extends Controller
         $usuario = DB::table('users')
                     ->where('id',$id)->get();
         $empresa = DB::table('empresa')->where('estado',1)->get();
+        $situacion_laboral = DB::table('situacion_laboral')->where('estado',1)->get();
+        $regimen_laboral = DB::table('regimen_laboral')->where('estado',1)->get();
+        $cargo_laboral = DB::table('cargo_laboral')->where('estado',1)->get();
+        $area_laboral = DB::table('area_laboral')->where('estado',1)->get();
         $tipo_documento = DB::table('documento')
             ->select('iddocumento', 'descripcion', 'dsc_corta')
             ->where('estado', '1')
@@ -504,18 +524,28 @@ class UsuarioController extends Controller
         return view('forms.trabajadores.updUsuario',[
             'usuario'           => $usuario,
             'empresa'           => $empresa,
+            'situacion_laboral'    => $situacion_laboral,
+            'regimen_laboral'    => $regimen_laboral,
+            'cargo_laboral'    => $cargo_laboral,
+            'area_laboral'    => $area_laboral,
             'tipo_documento'    => $tipo_documento
         ]);
     }
     public function updateUsuarioTrabajador(Request $request)
     { 
+        // dd($request);
          $rules = array(     
-            'idempresa'     => 'required',
-            'nro_documento' => 'required',
-            'nombre'        => 'required',
-            'apellidos'     => 'required',
-            // 'usuario'       => 'required|string|max:255',
-            'email'         => 'required|string|email|max:255',
+             'idempresa'         => 'required',
+            'iddocumento'       => 'required',
+            'nro_documento'     => 'required',
+            'nombre'            => 'required',
+            'idSexo'            => 'required',
+            'apellidos'         => 'required',
+            'situacionLaboral'  => 'required',
+            'regimenLaboral'    => 'required',
+            'cargo'             => 'required',
+            'areaLaboral'             => 'required',
+            'tipoTrabajador'    => 'required',  
         );
 
         $validator = Validator::make ( $request->all(), $rules );
@@ -531,7 +561,7 @@ class UsuarioController extends Controller
         ->where('id',strval($request->id))
         ->update([
             'idempresa'         => $request->idempresa,
-            'idtipo'            => $request->idtipo,
+            'idtipo'            => $request->tipoTrabajador,
             'nombre'			=> $request->nombre,
             'apellidos'         => $request->apellidos,
             'email'            	=> $request->email,
@@ -542,6 +572,10 @@ class UsuarioController extends Controller
             'cargo'        		=> $request->cargo,
             'avatar'            => null,
             'telefono'    		=> $request->telefono,
+            'area_trabajador'   => $request->areaLaboral,
+            'situacion_laboral' => $request->situacionLaboral,  
+            'regimen_laboral'   => $request->regimenLaboral,
+            'SEXO'             => $request->idSexo, 
             'glosa'             => $request->glosa 
         ]);
                 

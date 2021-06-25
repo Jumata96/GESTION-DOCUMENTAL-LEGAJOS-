@@ -1,5 +1,5 @@
 {{-- Acreditación de lengua nativa  --}}
-<div class="col s12 m6 l12">
+<div class="col s12 m12 l12">
 	<br>
 	<div class="card">
 		<div class="row">

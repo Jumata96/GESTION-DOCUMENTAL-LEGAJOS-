@@ -7,7 +7,7 @@
         var data = $('#myForm').serializeArray();
 
         $.ajax({
-            url: "{{ url('/trabajador/grabar') }}",
+            url: "{{ url('/usuario/grabar') }}",
             type:"POST",
             beforeSend: function (xhr) {
                 var token = $('meta[name="csrf-token"]').attr('content');
@@ -17,7 +17,7 @@
                 }
             },
            type:'POST',
-           url:"{{ url('/trabajador/grabar') }}",
+           url:"{{ url('/usuario/grabar') }}",
            data:data,
 
            success:function(data){
@@ -26,6 +26,7 @@
                 ( typeof data.nro_documento != "undefined" )? $('#error1').text(data.nro_documento) : null;
                 ( typeof data.nombre != "undefined" )? $('#error3').text(data.nombre) : null;
                 ( typeof data.apellidos != "undefined" )? $('#error4').text(data.apellidos) : null;
+                ( typeof data.usuario != "undefined" )? $('#error5').text(data.usuario) : null;
                 ( typeof data.email != "undefined" )? $('#error6').text(data.email) : null;
                 ( typeof data.password != "undefined" )? $('#error7').text(data.password) : null;
                 ( typeof data.idtipo != "undefined" )? $('#error8').text(data.idtipo) : null;
@@ -33,7 +34,7 @@
               } else {   
 
                 //alert(data.success);
-                window.location="{{ url('/trabajadores') }}";
+                window.location="{{ url('/usuarios') }}";
 
               }
               
@@ -47,4 +48,8 @@
 
     
 </script>
+
+
+
+
 

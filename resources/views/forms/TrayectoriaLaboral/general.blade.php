@@ -6,7 +6,7 @@
 		<div class="card">
 			<div class="card-header  ">
 				<i class="fa fa-table fa-lg material-icons">receipt</i>
-				<h2>SITUACIÓN ACADÉMICA</h2>
+				<h2>TRAYECTORIA LABORAL</h2>
 			</div>
 			<div class="card-header" style="height: 50px; padding-top: 5px; background-color: #f6f6f6">
 				<div class="col s12 m12">
@@ -80,6 +80,12 @@
                   <div class="col s12 ">
                     <div id="pestana1" class="col s12 tabs-mk">        
                       @include('forms.TrayectoriaLaboral.datosGenerales')                
+                    </div> 
+																				<div id="pestana2" class="col s12 tabs-mk">      
+                      @include('forms.TrayectoriaLaboral.datosDesplazamiento')                
+                    </div> 
+																				<div id="pestana3" class="col s12 tabs-mk">      
+                      @include('forms.TrayectoriaLaboral.datosAscenso')                
                     </div> 
                   </div>       
 					</div>

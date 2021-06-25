@@ -7,7 +7,7 @@
         var data = $('#myForm').serializeArray();
 
         $.ajax({
-            url: "{{ url('/trabajador/actualizar') }}",
+            url: "{{ url('/usuario/actualizar') }}",
             type:"POST",
             beforeSend: function (xhr) {
                 var token = $('meta[name="csrf-token"]').attr('content');
@@ -17,7 +17,7 @@
                 }
             },
            type:'POST',
-           url:"{{ url('/trabajador/actualizar') }}",
+           url:"{{ url('/usuario/actualizar') }}",
            data:data,
 
            success:function(data){
@@ -32,7 +32,7 @@
 
                 //alert(data.success);
                 @if(Auth::user()->idtipo == 'ADM')
-                  window.location="{{ url('/trabajadores') }}";
+                  window.location="{{ url('/usuarios') }}";
                 @else
                   setTimeout(function() {
                     M.toast({ html: '<span>Registro actualizado</span>'});

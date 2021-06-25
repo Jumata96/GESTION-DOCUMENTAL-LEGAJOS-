@@ -1,5 +1,5 @@
 {{-- Datos de familiares  --}}
-<div class="col s12 m6 l12">
+<div class="col s12 m12 l12">
 	<br>
 	<div class="card">
 		<div class="row">
@@ -64,7 +64,7 @@
 {{-- Datos de familiares  --}}
 
 {{-- Datos de domicilio    --}}
-<div class="col s12 m6 l12">
+<div class="col s12 m12 l12">
 	<br>
 	<div class="card">
 		<div class="col s12 m12 l12">
@@ -75,7 +75,7 @@
 				</select>
 				<div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
 			</div> 
-			<div class="input-field col s12 m12 l4">
+			<div class="input-field col s12 m6 l4">
 				<i class="material-icons prefix active">search</i>
 				<input id="numeroDocumentoFamiliar" name="numeroDocumentoFamiliar" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
 				<label for="numeroDocumentoFamiliar">Numero de Documento</label>

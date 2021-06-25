@@ -43,7 +43,7 @@
                   </a>
                   
                 </li>
-                <li class="bold">
+                <li class="bold" >
                   <a class="collapsible-header waves-effect waves-cyan">
                     <i class="material-icons">settings</i>
                     <span class="nav-text">Configuración</span>
@@ -69,6 +69,51 @@
                           <span>Trabajadores</span>
                         </a>
                       </li>
+                      <li>
+                        <a href="{{ url('/gestion-AreaLaboral') }}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Área Laboral</span>
+                        </a>
+                      </li>
+                      
+                      <li>
+                        <a href="{{ url('/gestion-CargoLaboral') }}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Cargo Laboral</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ url('/gestion-JornadaLaboral') }}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Jornada Laboral</span>
+                        </a>
+                      </li>
+                       <li>
+                        <a href="{{ url('/gestion-nivelRemunerativo') }}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Nivel Remunerativo</span>
+                        </a>
+                      </li>
+                      
+                       <li>
+                        <a href="{{ url('/gestion-RegimenLaboral') }}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Regimen Laboral</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ url('/gestion-ResolucionLaboral') }}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Resolución Laboral</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ url('/gestion-SituacionLaboral') }}">
+                          <i class="material-icons">keyboard_arrow_right</i>
+                          <span>Situación Laboral</span>
+                        </a>
+                      </li>
+                      
                       
                       <li>
                         <a href="{{ url('/parametros') }}">
@@ -79,87 +124,142 @@
                     </ul>
                   </div>
                 </li>
-                <li class="navigation-header">
+                <li class="navigation-header separador">
                   <a class="navigation-header-text">Gestión administrativa</a>
                   <i class="navigation-header-icon material-icons">more_horiz</i>
                 </li>
                 <li class="li-hover">
-                <li class="bold">
+                <li class="bold"  style="display:none">
                   <a class="waves-effect waves-cyan"  href="{{ url('/gestion-fileacion') }}" >
                     <i class="material-icons">photo_filter</i>
                     <span class="nav-text">Filiación e identificación</span>
                   </a>
                 </li>
-                <li class="bold">
+                <li class="bold"  style="display:none">
                   <a class="waves-effect waves-cyan"  href="{{ url('/gestion-academica') }}" >
                     <i class="material-icons">content_paste</i>
-                    <span class="nav-text">Situación académica</span>
+                    <span class="nav-text">Nivel Educativo</span>
                   </a>
                 </li>
-                <li class="bold">
-                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-ingreso') }}">
-                    <i class="material-icons">person_outline</i>
-                    <span class="nav-text">Ingreso o reingreso</span>
+                <li class="bold"  style="display:none"  >
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-capacitaciones') }}"   >
+                    <i class="material-icons">open_in_browser</i>
+                    <span class="nav-text">Capacitación</span>
+                  </a>
+                </li>
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-Contratos') }}">
+                    <i class="material-icons">content_copy</i>
+                    <span class="nav-text">Contratos Y Nombramiento</span>
                     
                   </a>
                 </li>
-                <li class="bold">
-                  <a class=" waves-effect waves-cyan"  href="{{ url('/gestion-trayectoria') }}">
-                    <i class="material-icons">settings_ethernet</i>
-                    <span class="nav-text">Trayectoria laboral</span>
+                <li class="bold"  style="display:none">
+                  <a class=" waves-effect waves-cyan"  href="{{ url('/gestion-Renuncias') }}">
+                    <i class="material-icons">layers_clear</i>
+                    <span class="nav-text">Renuncias y Liquidaciones </span>
                   </a>
                 </li>
-                <li class="bold">
-                  <a class="waves-effect waves-cyan">
+                
+                <li class="bold"  style="display:none">
+                  <a class=" waves-effect waves-cyan"  href="{{ url('/gestion-Desplazamiento') }}">
+                    <i class="material-icons">settings_ethernet</i>
+                    <span class="nav-text">Desplazamiento y cargos</span>
+                  </a>
+                </li> 
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-licencias') }}">
+                    <i class="material-icons">timer_off</i>
+                    <span class="nav-text">Licencias</span>
+                  </a>
+                </li>
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-vacaciones') }}">
+                    <i class="material-icons">flight_takeoff</i>
+                    <span class="nav-text">Vacaciones</span>
+                  </a>
+                </li>
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-ascensos') }}">
+                    <i class="material-icons">timeline</i>
+                    <span class="nav-text">Ascensos</span>
+                  </a>
+                </li>
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-remuneracion') }}">
+                    <i class="material-icons">attach_money</i>
+                    <span class="nav-text">Remuneración Personal</span>
+                  </a>
+                </li>
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-remuneracionFamiliar') }}">
+                    <i class="material-icons">supervisor_account</i>
+                    <span class="nav-text">Remuneración Familiar</span>
+                  </a>
+                </li>
+                 <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-evaluaciones') }}">
+                    <i class="material-icons">playlist_add_check</i>
+                    <span class="nav-text">Evaluaciones</span>
+                  </a>
+                </li>
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-merito') }}">
+                    <i class="material-icons">star_border</i>
+                    <span class="nav-text">Merito</span>
+                  </a>
+                </li>
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-demerito') }}">
+                    <i class="material-icons">do_not_disturb</i>
+                    <span class="nav-text">Demerito</span>
+                  </a>
+                </li>
+                {{-- <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-incentivos') }}">
                     <i class="material-icons">add</i>
                     <span class="nav-text">Asignación e insentivos</span>
                     
                   </a>
                 </li>
-                <li class="bold">
-                  <a class="waves-effect waves-cyan">
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-pension') }}">
                     <i class="material-icons">credit_card</i>
                     <span class="nav-text">Retiro y régimen pension.</span>
                   </a>
                 </li>
-                <li class="bold">
-                  <a class=" waves-effect waves-cyan" href="{{ url('correo') }}">
+                <li class="bold"  style="display:none">
+                  <a class=" waves-effect waves-cyan" href="{{ url('/gestion-premios') }}">
                     <i class="material-icons">star_border</i>
                     <span class="nav-text">Premios y estímulos</span>
                   </a>                  
                 </li>
-                <li class="bold">
-                  <a class="waves-effect waves-cyan">
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-sanciones') }}">
                     <i class="material-icons">warning</i>
                     <span class="nav-text">Sanciones</span>
                   </a>
-                </li>
-                <li class="bold">
-                  <a class="waves-effect waves-cyan">
-                    <i class="material-icons">airplay</i>
-                    <span class="nav-text">Licencias y vaciones</span>
-                  </a>
-                </li>
-                <li class="bold">
-                  <a class="waves-effect waves-cyan">
+                </li> --}}
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-otros') }}" >
                     <i class="material-icons">format_list_bulleted</i>
                     <span class="nav-text">Otros</span>
                   </a>
                 </li>
-                <li class="bold">
-                  <a class="waves-effect waves-cyan">
+                <li class="bold"  style="display:none">
+                  <a class="waves-effect waves-cyan" href="{{ url('/gestion-escalafonario') }}" >
                     <i class="material-icons">receipt</i>
                     <span class="nav-text">Informe escalafonario</span>
                   </a>
                 </li>
-                <li class="navigation-header">
+                {{-- <li class="navigation-header">
                   <a class="navigation-header-text">Mas opciones</a>
                   <i class="navigation-header-icon material-icons">more_horiz</i>
-                </li>
+                </li> --}}
                 <li class="li-hover">
               
             </li>
-            <li>
+            {{-- <li>
               <a class=" waves-effect waves-cyan" href="{{ url('colores') }}" target="_blank">
                 <i class="material-icons">palette</i>
                 <span class="nav-text">Colores</span>
@@ -170,7 +270,7 @@
                 <i class="material-icons">help_outline</i>
                 <span class="nav-text">Soporte</span>
               </a>
-            </li>
+            </li> --}}
           </ul>
           
        

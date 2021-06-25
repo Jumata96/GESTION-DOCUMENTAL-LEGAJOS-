@@ -15,7 +15,7 @@
     <script src="{{asset('js/script/customizer.js')}}" type="text/javascript"></script>
     <!-- END THEME  JS-->
     <!-- BEGIN PAGE LEVEL JS-->
-    <script src="{{asset('js/script/data-tables.js')}}" type="text/javascript"></script>
+    {{-- <script src="{{asset('js/script/data-tables.js')}}" type="text/javascript"></script> --}}
     <!-- END PAGE LEVEL JS-->
 
     <!-- sparkline -->
@@ -29,24 +29,24 @@
     <script type="text/javascript" src="{{asset('js/plugins/angular.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/vue.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/axios.min.js')}}"></script>
-
-    <script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script>
+{{-- 
+    <script type="text/javascript" src="{{asset('ckeditor/ckeditor.js')}}"></script> --}}
 
    
 
-    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    {{-- <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet"> --}}
 
     <!-- Include video.js and videojs-contrib-hls in your page
       -->
-
+{{-- 
     <script src="https://unpkg.com/video.js/dist/video.js"></script>
     <script src="https://unpkg.com/videojs-flash/dist/videojs-flash.js"></script>
-    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script> --}}
 
     <!--
        Now, initialize your player. That's it!
       -->
-    <script>
+    {{-- <script>
       (function(window, videojs) {
         var player = window.player = videojs('example-video');
 
@@ -62,9 +62,8 @@
           return false;
         });
       }(window, window.videojs));
-    </script>
-
-    <script type="text/javascript">
+    </script> --}}
+    <script type="text/javascript">
         $(document).ready(function(){
            $(document).bind("contextmenu",function(e){
               return false;
@@ -100,14 +99,35 @@
         // $('.datepicker').datepicker( {"format":'dd-mm-yyyy'} ).datepicker("setDate", new Date());
         $('.datepicker').datepicker( {"format":'dd-mm-yyyy'}).datepicker("setDate", new Date());
         
-        // $(document).ready(function(){
-        //   $('.datepicker').datepicker(
-        //       {selectMonths: false},// Creates a dropdown to control month
-        //       {selectYears: 100}, // Creates a dropdown of 15 years to control year
-        //       {format: 'dd/mm/yyyy'} 
-        //   );
+ 
+		    var ruta ='/sidebar/estado';
+		  
+        axios.get( ruta ).then(function (response) { 
+              var sidebar = document.getElementsByClassName("bold");
+                      if(response.data["estado"]=="desactivado"){ 
+                            for (let index = 2; index < sidebar.length; index++) {
+                              document.getElementsByClassName("bold")[index].style.display = "none";
+                            }
+                              document.getElementsByClassName("separador")[0].style.display = "none";
+
+                      }else{ 
+                          for (let index = 2; index < sidebar.length; index++) {
+                            document.getElementsByClassName("bold")[index].style.display = "block";
+                          }
+                            document.getElementsByClassName("separador")[0].style.display = "block";
+
+                      } 
+                }).catch(function (error) {
+                    console.log(error);
+         });
+
+
+
           
-        // });
+        // }); 
+
+        
+
     </script>
     
 
@@ -118,3 +138,49 @@
     @section('script')
 
     @show
+    <script>
+      
+		$('#data-table-simpleIII').DataTable(
+		{ //cargamos los estilos a la tabla con los nuevos datos(tr) 
+			"responsive": true,
+      language: {
+                  search: "Buscar en la tabla:",
+                  paginate: {
+                      first:      "Primero",
+                      previous:   "Anterior",
+                      next:       "Siguente",
+                      last:       "Anterior"
+                  },
+                  processing:     "Traitement en cours...",
+                  lengthMenu:    "Mostrar _MENU_registros",    
+                  infoEmpty:      "Visualización  0 a 0 de 0 registros",
+                  infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)", 
+                  zeroRecords:    "No se encuentran registros ",
+        
+             
+              }
+		});
+    // var tableScrip = $('#data-table-simple').DataTable();
+		// tableScrip.destroy(); //eliminamos los estilos y datos cargados en la tabla 
+    $('#data-table-simple').DataTable(
+		{ //cargamos los estilos a la tabla con los nuevos datos(tr) 
+			"responsive": true,
+      language: {
+                  search: "Buscar en la tabla:",
+                  paginate: {
+                      first:      "Primero",
+                      previous:   "Anterior",
+                      next:       "Siguente",
+                      last:       "Anterior"
+                  },
+                  processing:     "Traitement en cours...",
+                  lengthMenu:    "Mostrar _MENU_registros",  
+                  info: "Visualización  _PAGE_ de _PAGES_",  
+                  infoEmpty:      "Visualización  0 a 0 de 0 registros",
+                  infoFiltered:   "(filtre de _MAX_ registros en total total)", 
+                  zeroRecords:    "No se encuentran registros ",
+        
+             
+              }
+		});
+    </script>

@@ -10,6 +10,21 @@ $(function () {
   $('#data-table-simple').DataTable({
     "responsive": true,
   });
+  $('#data-table-simpleI').DataTable({
+    "responsive": true,
+  });
+  $('#data-table-simpleII').DataTable({
+    "responsive": true,
+  });
+  $('#data-table-simpleIII').DataTable({
+    "responsive": true,
+  });
+  $('#data-table-simpleIV').DataTable({
+    "responsive": true,
+  });
+  $('#data-table-simpleV').DataTable({
+    "responsive": true,
+  });
 
   // Row Grouping Table
 

@@ -58,7 +58,7 @@
                                <?php
                                     if($bandera){                                                           
                                 ?>
-                               <tfoot>
+                               {{-- <tfoot>
                                   <tr>
                                      <th>#</th>
                                      <th>logo</th>
@@ -70,7 +70,7 @@
                                      <th>Estado</th>
                                      <th>Acción</th>
                                   </tr>
-                                </tfoot>
+                                </tfoot> --}}
 
                                <tbody>
                                 <tr>

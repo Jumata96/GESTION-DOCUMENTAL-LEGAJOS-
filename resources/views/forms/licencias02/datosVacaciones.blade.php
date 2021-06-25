@@ -1,0 +1,214 @@
+ 
+
+{{--Datos de vacaciones  --}}
+<div class="col s12 m6 l12">
+	<br>
+	<div class="card">
+		<span>Datos de vacaciones </span>
+		<div class="row">
+			<div class="col s12 m12 l12">
+				<div class="card-content" style="overflow-x:scroll">
+					<table id="data-table-simple" class="responsive-table display tabla" style="white-space: nowrap;">
+						<thead>
+							<tr>
+								<th>N°</th>
+								<th>ACCIÓN</th>
+								<th>MOTIVO</th>
+								<th>RÉGIMEN</th>
+								<th>F.INICIO</th>
+								<th>F.FIN</th>
+								<th>N° RESOLUCIÓN</th>
+								<th>ESTADO</th>
+								<th class="center">ACCIONES</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<th>N°</th>
+								<th>ACCIÓN</th>
+								<th>MOTIVO</th>
+								<th>RÉGIMEN</th>
+								<th>F.INICIO</th>
+								<th>F.FIN</th>
+								<th>N° RESOLUCIÓN</th>
+								<th>ESTADO</th>
+								<th>ACCIONES</th>
+							</tr>
+						</tfoot>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>VACACIONES</td>
+								<td>APROBADO POR VACACIONES</td>
+								<td>02-09-2018</td>
+								<td>02-09-2018</td>
+								<td>02-09-2019</td>
+								<td>365</td>
+								<td> APROBADO</td>
+								<td>
+									<a href="#" class=" waves-effect waves-light grey lighten-5 tooltipped"  >
+									<i class="material-icons grey-text text-darken-2"  data-tooltip="Eliminar" >clear</i></a>
+									<a href="#" class=" waves-effect waves-light grey lighten-5 tooltipped"  >
+									<i class="material-icons grey-text text-darken-2"  data-tooltip="Historial">archive</i></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{--Datos de vacaciones  --}}
+ {{-- Datos principales de la resolución    --}}
+<div class="col s12 m6 l12">
+	<div class="card"> 
+		<br> 
+		<div class="row cuerpo">
+			<div class="row"  v-show="datosEmpleador" >
+				<div class="col s12 m6 l8 ">
+					<div class="col s12 m6 l12 card">
+						<span>DATOS PRINCIPALES DE RESOLUCIÓN</span>
+						<br><br> 
+						<form action="" method="POST"  id="formExpediente">
+							<input type="hidden" name="idTrabajador" id="idTrabajador" >
+							<div class="col s12 m6 l12">
+								<div class="col s12 m6 l6">
+									<label for="tipoResolucion">Tipo de Resolucion</label>                 
+									<select v-model="tipoResolucion" class="browser-default" id="tipoResolucion" name="tipoResolucion" required>
+										<option value="" disabled selected="">Seleccione</option>
+										<option value="RESOLUCION DIRECTORIAL"   selected="">RESOLUCION DIRECTORIAL</option>
+									</select>
+									<div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+								</div>
+								<div class="input-field col s12 m6 l6">
+									<i class="material-icons prefix active">class</i>
+									<input id="numeroResolucion" v-model="numeroResolucion" placeholder="" name="numeroResolucion" type="number">
+									<label for="numeroResolucion"> NUMERO DE RESOLUCIÓN</label> 
+									<div id="error2" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+								</div>
+								<div class="input-field col s12 m6 l6">
+									<i class="material-icons prefix active">date_range</i>
+									<input id="fechaResolucion" v-model="fechaResolucion" placeholder="" class="datepicker" name="fechaResolucion" type="text">
+									<label for="fechaResolucion"> FECHA DE RESOLUCIÓN</label> 
+									<div id="error3" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+								</div>
+								<div class="input-field col s12 m6 l6">
+									<i class="material-icons prefix active">class</i>
+									<input id="foliosResolucion" name="foliosResolucion"  v-model="foliosResolucion" type="number">
+									<label for="foliosResolucion">Folios</label>
+									<div id="error4" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+								</div> 
+								<div class="col s12 m12 l12">	 
+									<div class="col s12 m6 l4">
+										<label for="situacionAcademicaTitulos">REGIMEN LABORAL</label>                 
+										<select class="browser-default" id="situacionAcademicaTitulos" name="situacionAcademicaTitulos" required>
+											<option value="" disabled selected="">Seleccione</option> 
+										</select> 
+									</div>
+											<div class="col s12 m6 l4">
+												<label for="inicioDeTitulos">ACCIÓN</label>                 
+												<select class="browser-default" id="inicioDeTitulos" name="inicioDeTitulos" required>
+													<option value="" disabled selected="">Seleccione</option>
+												</select>
+												{{-- 
+												<div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+												--}}
+											</div>
+									<div class="col s12 m6 l4">
+										<label for="finDeTitulos">MOTIVO ACCIÓN</label>                 
+										<select class="browser-default" id="finDeTitulos" name="finDeTitulos" required>
+											<option value="" disabled selected="">Seleccione</option>
+										</select>
+										{{-- 
+										<div id="error1" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+										--}}
+									</div>
+									</div> 
+									<br> <br> <br>
+									<br> <br> <br>
+							</div> 
+							
+									<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+						</form>
+					</div>
+				</div>
+				{{-- SEC IMAGEN --}}
+				<div class="col s12 m6 l4 ">
+					<div class="card white">
+						<span class="card-title">Documentos</span>
+						<div class="row">
+							<div class="file-field input-field col s12">
+								<div class="col s8 m8 l7 center" style="margin: auto; width: 80%">
+									<img src="{{asset('images/avatar/archivos3.png')}}" alt="" id="avatarImage" class="  responsive-img valign profile-image    " style="width: 80px">
+								</div>
+								<br>
+								<div class="file-field input-field col s12 ">
+									<div class="btn light-blue darken-1 ">
+										<span>SUBIR</span>
+										<input type="file" id="archivo" name="archivo" >
+									</div>
+									<div class="file-path-wrapper">
+										<input class="file-path validate" type="text" name="text" id="imagen">
+										<p class="right"><i>Solo se permiten archivos con extensión  
+											PNG en tamaño maximo 2MB. </i>
+										</p>
+										<div id="error6" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{-- SEC IMAGEN --}} 
+			</div>
+		</div>
+	</div>
+</div>
+{{-- Datos principales de la resolución    --}}
+
+{{-- Datos DETALLE de la resolución    --}}
+	<div class="col s12 m6 l12">
+		<br>
+		<div class="card">
+			<span>Detalle de la resolución</span>
+			<div class="col s12 m12 l12"> 
+
+				<div class="col s12 m6 l12">
+					
+					 <div class="input-field col s12 m6 l4">
+										<i class="material-icons prefix active">date_range</i>
+										<input id="fechaIniciOVacaciones" v-model="fechaIniciOVacaciones" placeholder="" class="datepicker" name="fechaIniciOVacaciones" type="text">
+										<label for="fechaIniciOVacaciones"> FECHA DE INICIO</label> 
+										<div id="error3" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+									</div>
+
+									<div class="input-field col s12 m6 l4">
+										<i class="material-icons prefix active">date_range</i>
+										<input id="fechaFinVacaciones" v-model="fechaFinVacaciones" placeholder="" class="datepicker" name="fechaFinVacaciones" type="text">
+										<label for="fechaFinVacaciones"> FECHA FIN</label> 
+										<div id="error3" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
+									</div>
+
+					<div class="input-field col s12 m6 l4">
+						<i class="material-icons prefix active">filter_9_plus</i>
+						<input id="diasVacaciones" name="diasVacaciones" type="text" data-error=".errorTxt1"   onkeyup="mayus(this);">
+						<label for="diasVacaciones">NUMERO DE DIAS</label> 
+					</div>
+				</div> 
+
+						<div class="col s12 m12 l12">
+			<div class="input-field col s12 l12 m12">
+                                  <i class="material-icons prefix">mode_edit</i>
+                                  <textarea id="glosaVacaciones" name="glosaVacaciones" class="materialize-textarea" lenght="200" maxlength="200" value="" style="height: 84px"></textarea>
+                                  <label for="glosaVacaciones" class="">Comentario</label>
+                                </div>  
+		</div>
+
+
+			</div> 
+
+		</div>
+	</div>
+ {{-- Datos DETALLE de la resolución    --}}
+ 

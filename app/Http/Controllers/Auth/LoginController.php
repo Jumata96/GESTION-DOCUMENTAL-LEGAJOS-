@@ -39,6 +39,9 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
+        session()->flash('trabajador_Id');
+
+        $trabajador_id = session('trabajador_Id');
         
         return view('auth.login');
     }

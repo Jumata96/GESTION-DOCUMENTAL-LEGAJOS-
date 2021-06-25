@@ -53,7 +53,7 @@
 					<div class="input-field col s12 m6 l4">
 						<i class="material-icons prefix active">chrome_reader_mode</i>
 						<input readonly="readonly" placeholder="" id="situacionLaboralActual" name="situacionLaboralActual" type="text" data-error=".errorTxt1" onkeyup="mayus(this);">
-						<label for="situacionLaboralActual">SITUACIÓN LABOARAL</label>
+						<label for="situacionLaboralActual">SITUACIÓN LABORAL</label>
 						<div id="error5" style="padding-left: 3rem; color: red; font-size: 12px; font-style: italic;"></div>
 					</div>
 				</div>

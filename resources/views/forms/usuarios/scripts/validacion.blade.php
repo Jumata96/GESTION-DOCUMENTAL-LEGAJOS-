@@ -2,10 +2,10 @@
   //---------JPaiva--03-01-2019---------VALIDAR INPUT-----------------------------------
         
   //$('#nro_documento').mask('09999999999');
-  $('#cargo').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {'translation': {
-      A: {pattern: /[A-Za-z0-9\s]/}
-    }
-  });
+  // $('#cargo').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {'translation': {
+  //     A: {pattern: /[A-Za-z0-9\s]/}
+  //   }
+  // });
   
   //$('#telefono').mask('09999999999999999999');
   $('#usuario').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', {'translation': {

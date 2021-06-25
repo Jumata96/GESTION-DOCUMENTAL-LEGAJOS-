@@ -41,12 +41,12 @@
                       
                         <div class="card-content">
                           Existen <?php echo ($bandera)? count($usuarios) : 0; ?> registros. <br><br>
-                          <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                          <table id="data-table-simple23" class="responsive-table display" cellspacing="0">
                                <thead>
                                   <tr>
                                      <th>#</th>
                                      <th>Nombre</th>
-                                     <th>Usuario</th>
+                                     <th>Documento</th>
                                      <th>Email</th>
                                      <th>Fecha creación</th>
                                      <th>Estado</th>
@@ -62,7 +62,7 @@
                                 <tr id="tr{{$datos->id}}">                                  
                                      <td><?php echo $i; ?></td>
                                      <td><?php echo $datos->nombre.' '.$datos->apellidos ?></td>
-                                     <td><?php echo $datos->usuario ?></td>
+                                     <td><?php echo $datos->nro_documento ?></td>
                                      <td><?php echo $datos->email ?></td>
                                      <td><?php echo $datos->created_at ?></td>
                                      <td style="width: 12rem">
@@ -116,5 +116,31 @@
 
   @include('forms.usuarios.scripts.desabilitar')
   @include('forms.usuarios.scripts.habilitar')
+    <script>
+    var table = $('#data-table-simple23').DataTable();
+		table.destroy(); //eliminamos los estilos y datos cargados en la tabla 
+
+    $('#data-table-simple23').DataTable(
+		{ //cargamos los estilos a la tabla con los nuevos datos(tr) 
+			"responsive": true,
+      language: {
+                  search: "Buscar en la tabla:",
+                  paginate: {
+                      first:      "Primero",
+                      previous:   "Anterior",
+                      next:       "Siguente",
+                      last:       "Anterior"
+                  },
+                  processing:     "Traitement en cours...",
+                  lengthMenu:    "Mostrar _MENU_registros",  
+                  info: "Visualización  _PAGE_ de _PAGES_",  
+                  infoEmpty:      "Visualización  0 a 0 de 0 registros",
+                  infoFiltered:   "(filtre de _MAX_ registros en total total)", 
+                  zeroRecords:    "No se encuentran registros ",
+        
+             
+              }
+		});
+  </script>
 
 @endsection
