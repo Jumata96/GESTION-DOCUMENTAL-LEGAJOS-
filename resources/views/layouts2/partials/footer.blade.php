@@ -9,7 +9,7 @@
         	<div class="container">
         		<span class="right">
 	              Powered by <a class="colorInnova" style="{{(trim(Auth::user()->footer_color) == 'footer-light')? 'black' : '#fafafa' }}; font-style: normal;" href="http://innova-tec.me" target="_blank" > 
-	              <b style="color: {{(trim(Auth::user()->footer_color) == 'footer-light')? 'black' : '#fafafa' }}; font-style: normal;" class="colorInnova" >INNOVA</b>TEC</a>
+	              <b style="color: {{(trim(Auth::user()->footer_color) == 'footer-light')? 'black' : '#fafafa' }}; font-style: normal;" class="colorInnova" >JULINHO </b>MT</a>
 	            </span>
 
 	           
